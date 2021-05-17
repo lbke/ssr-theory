@@ -37,7 +37,7 @@ So, there is an infinite number of requests if you consider all parameters, but 
 
 ### Takeaways
 
-- server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and output some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
+- server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and outputs some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
 - what matters are the value you will use to fill the blanks your template, the props.
 - the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the nature of the request attributes you'll want to consider to compute the result.
 
@@ -195,7 +195,7 @@ Formally, Incremental Static Rendering alleviates both the rule of finiteness an
 
 Since the number of requests that can hit your website is finite in a finite amount of time, it allows you to stretch the build time infinitely. 
 
-Note: there is still a very minor hypothesis, that people don't spam your website with so many different requests that it saturates your ability to render the pages. More formally, that they don't map $R_{getter}$ faster than $|R_{getter}|*t_render$. 
+Note: there is still a very minor hypothesis, that people don't spam your website with so many different requests that it saturates your ability to render the pages. More formally, that they don't map $R_{getter}$ faster than $|R_{getter}|*t_{render}$. 
 
 And also, that the possible values still evolves relatively slowly, otherwise user will still get stale data. If the cache time to live is to short, you end up with usual server-side rendering, which defeats the purpose of ISR.
 
