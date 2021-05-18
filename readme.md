@@ -1,4 +1,4 @@
-# Theoretical foundations for server-rendering and static-rendering
+# Theoretical foundations for server-side rendering and static-rendering
 
 And why they are actually the same thing.
 
@@ -165,7 +165,7 @@ So, in our terminology, a Next.js "page" is a template + a props getter function
 
 Static Site Generation is a form build-time rendering. However, it does accept only one attribute as input: the request URL. 
 
-This includes the URL parameters as well. So, a page always have a base path, for instance, `/blog/articles/:id `. In Next.js, this corresponds specifically to its position in the `pages` folder. But it can also have "parameterized paths", which are called dynamic routes : that's just the base path + some route parameters. For instance, `/blog/articles/12`.
+This includes the URL parameters as well. So, a page always have a base path, for instance, `/blog/articles/:id `. In Next.js, this corresponds specifically to its position in the `pages` folder. But it can also have "parameterized paths", which are called dynamic routes : that's just the base path + some route parameters. For instance, `/blog/articles/12`.
 
 So, Next implicitly defines an additional build-time eligibility rule like follow:
 $$
@@ -231,5 +231,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MjA1ODYzNF19
+eyJoaXN0b3J5IjpbNTk3MTM1MjNdfQ==
 -->
