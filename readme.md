@@ -205,18 +205,18 @@ There is still a strong limitation: props are still entirely defined by the URL.
 
 ## A more generic server-rendering?
 
-Based on this model, here is what could be a unified view of SSR, for a Next.js page:
+Based on this model, here is what could be a unified view of SSR and SSG, for a Next.js page:
 
 ```ts
 // the template
 export const MyPage = (props: Props) => { return <>...</>}
 
-// for build-time rendering
+// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs
 export async function computePossibleRequests = (): Array<Request> => {
     return [...]
 }
 // for both request-time and build-time rendering
-// /!\ will run for every request, even when static rendering (in order to get the right cache key)
+// /!\ this function will run for each request, even when static rendering (in order to get the right cache key). In Next.js, for static pages, that c
 export async function propsGetter(req: Request): Props {
     /// do your thing
     return {...}
@@ -233,5 +233,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTE4ODQ1NTVdfQ==
+eyJoaXN0b3J5IjpbLTEzMzY4MTE3MTldfQ==
 -->
