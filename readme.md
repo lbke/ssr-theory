@@ -89,7 +89,7 @@ But how do you actually compute this set? Here are the typings and the final bui
 type Req = Object
 type Props = Object
 type HTML = string
-type RBuildComputer = () => Array<Props> // must respect the build-eligbility conditions
+type RBuildComputer = () => Array<Req> // must respect the build-eligbility conditions
 type PropsGetter = (req: Req) => Props
 type Renderer = (props: Props) => HTML
 
@@ -234,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDQ4OTc2MDldfQ==
+eyJoaXN0b3J5IjpbMjEwODY0MTMxN119
 -->
