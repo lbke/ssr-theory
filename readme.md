@@ -72,9 +72,12 @@ Rule 1 is that obviously the request should make sense and be a "possible" reque
 
 So, a valid build time request is any set of attributes that belongs to any valid $R_{build}$ ensemble. 
 
-Let's call $RB$ the set of all build-eligible sets. Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. If $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and it belongs to $RB$. 
+Let's call $RB$ the set of all build-eligible sets. Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot :
+if $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and it belongs to $RB$. 
 
-Congratulations, you can enjoy static rendering.
+Which can be written like this: $R_{getter} \subset RB$.
+
+Congratulations, you can enjoy static rendering wit.
 
 ### Implementation
 
@@ -231,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MTE2MjE3N119
+eyJoaXN0b3J5IjpbMTU1MDIzODA1XX0=
 -->
