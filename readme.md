@@ -77,7 +77,7 @@ if $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and i
 
 Which can be written like this: $R_{getter} \subset RB$.
 
-Congratulations, you can enjoy static rendering wit.
+Congratulations, you can enjoy static rendering from an ensemblist point of view.
 
 ### Implementation
 
@@ -234,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1MDIzODA1XX0=
+eyJoaXN0b3J5IjpbMjA0NDg2ODI2OF19
 -->
