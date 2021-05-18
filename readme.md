@@ -94,7 +94,7 @@ type PropsGetter = (req: Req) => Props
 type Renderer = (props: Props) => HTML
 
 // compute the props for each possible request
-function buildTimeProps(RGetter: RBuildComputer, propsGetter: PropsGetter): Array<Res> => {
+function buildTimeProps(RGetter: RBuildComputer, propsGetter: PropsGetter): Array<Props> => {
     return RGetter().map(req => propsGetter(req))
 }
 
@@ -234,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NzAwNTMwM119
+eyJoaXN0b3J5IjpbMTAwNDIyMzExXX0=
 -->
