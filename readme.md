@@ -114,7 +114,7 @@ We'll describe how Next.js solves a simplified version of this problem later-on.
 
 - By selecting the attributes you consider as input of your renderer function, you define an $R_{getter}$ set. If it respects the 3 build rules, you can enjoy static rendering.
 - Example: rendering a finite number of blog articles. $R_{getter}$ is the list of all your articles URL, it's finite, doesn't change. If you write a new article, you can of course rebuild to get fresh data (we'll dig that problem later).
-- This is theoretical, in real life computing the set of possible requests feels unnatural.
+- This is theoretical, in real life computing the set of all possible requests feels unnatural.
 - There is no such thing as a website without a server. Static hosts are just extremely basic server that can only process the URL part of the request, but they still do process the request. They act as $propsGetter$ functions in our model.
 
 ## Rendering at request time
@@ -233,5 +233,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2OTk4MDU1NV19
+eyJoaXN0b3J5IjpbMTU1ODY0MDMxMF19
 -->
