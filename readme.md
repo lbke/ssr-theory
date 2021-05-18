@@ -199,9 +199,9 @@ Since the number of requests that can hit your website is finite in a finite amo
 
 Note: there is still a very minor hypothesis, that people don't spam your website with so many different requests that it saturates your ability to render the pages. More formally, that they don't map $R_{getter}$ faster than $|R_{getter}|*t_{render}$. 
 
-And also, that the possible values still evolves relatively slowly, otherwise user will still get stale data. If the cache time to live is to short, you end up with usual server-side rendering, which defeats the purpose of ISR.
+And also, that the possible values still evolves relatively slowly, otherwise user will still get stale data. If the cache time to live is too short, you end up with usual server-side rendering, which defeats the purpose of ISR.
 
-There is still a strong limitation: props are still entirely defined by the URL. You cannot process the request with current implementation.
+There is still a strong limitation: props are still entirely defined by the URL. You cannot process the request with a custom function in the current implementation.
 
 ## A more generic server-rendering?
 
@@ -233,5 +233,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTIzNTc2ODRdfQ==
+eyJoaXN0b3J5IjpbLTEyNTE4ODQ1NTVdfQ==
 -->
