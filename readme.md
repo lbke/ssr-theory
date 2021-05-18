@@ -230,3 +230,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = 0$ => this is server-side rendering.
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTU2MjA1ODYzNF19
+-->
