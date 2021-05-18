@@ -68,7 +68,7 @@ R_{build} \subset R\\
 R_{build}(t) = R_{build}
 $$
 
-Rule 1 is that obviously the request should be actually possible. Rule 2 is the "rule of finiteness", rule 3 is the "rule of staticness".
+Rule 1 is that obviously the request should make sense and be a "possible" request. Rule 2 is the "rule of finiteness", rule 3 is the "rule of staticness".
 
 So, a valid build time request is any set of attributes that belongs to any valid $R_{build}$ ensemble. 
 
@@ -231,5 +231,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5ODY0OTM3OV19
+eyJoaXN0b3J5IjpbMTQ3MTE2MjE3N119
 -->
