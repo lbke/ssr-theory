@@ -81,7 +81,7 @@ Congratulations, you can enjoy static rendering from an ensemblist point of view
 
 ### Implementation
 
-Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req$ included in $R_{getter}$.
+Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req$ included in $R_{getter}$, where $R_{getter} \subset RB$.
 
 But how do you actually compute this set? Here are the typings and the final build-time rendering function:
 
@@ -234,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NDg2ODI2OF19
+eyJoaXN0b3J5IjpbLTQyODg3MDg3M119
 -->
