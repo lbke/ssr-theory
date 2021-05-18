@@ -231,6 +231,7 @@ export async function propsGetter(req: Request): Props {
 
 // for Incremental Static Regeneration and request-time rendering
 // this affects the renderer function = the React component rendering, which is the slow part
+// (this could probably be a function in a more advanced version, eg to control caching strategy based on the time of the day or activity peaks for instance)
 export const TTL = 5
 ```
 
@@ -242,6 +243,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTg5MjAzODEsMTkzMzA1MzUzMiwtMT
-c4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3OD
+QzNTAxOThdfQ==
 -->
