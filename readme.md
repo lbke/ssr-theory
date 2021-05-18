@@ -213,6 +213,7 @@ export const MyPage = (props: Props) => { return <>...</>}
 
 // the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs
 export async function computePossibleRequests = (): Array<Request> => {
+    // do your thing
     return [...]
 }
 // for both request-time and build-time rendering
@@ -233,5 +234,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3ODUzMTE2OV19
+eyJoaXN0b3J5IjpbMjEzOTU0NjY1XX0=
 -->
