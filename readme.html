@@ -197,7 +197,8 @@ For SSR, that's getServerSideProps.
 
 <span class="token comment">// for Incremental Static Regeneration and request-time rendering</span>
 <span class="token comment">// this affects the renderer function = the React component rendering, which is the slow part</span>
-<span class="token keyword">export</span> <span class="token keyword">async</span> TTL <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token comment">// (this could probably be a function in a more advanced version, eg to control caching strategy based on the time of the day or activity peaks for instance)</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> TTL <span class="token operator">=</span> <span class="token number">5</span>
 </code></pre>
 <p>Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. Tada.</p>
 <ul>
