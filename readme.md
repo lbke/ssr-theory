@@ -173,7 +173,7 @@ So, Next implicitly defines an additional build-time eligibility rule like follo
 $$
 R_{getter} \subset RB \implies \forall req \in R_{getter}; propsGetter(req)= propsGetter(req_{url})
 $$
-The props must only depends on the considered route or URL.
+The props must only depends on the considered route or URL. Otherwise you can't use the static props computation functions provided by Next.
 
 If we consider that all URLs for a page are known at build-time, we can render the page once for each possible URL. At runtime, all subsequent request on the same URL will get the same page.
 
@@ -233,5 +233,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MzAyNTEzOF19
+eyJoaXN0b3J5IjpbMTI2NTU0OTE3M119
 -->
