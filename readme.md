@@ -14,7 +14,7 @@ A request is a set of attributes. It's the HTTP request, but also the informatio
 
 A result is a rendered template. Like a text with blanks, whose blanks have been filled. The template could be a React component, or a template written in more classical language, like EJS, PUG, PHP... 
 
-Therefore, the page is entirely defined by the choice of the template and by the filling values.
+Therefore, the rendered page is entirely defined by the choice of the template and by the filling values.
 
 We do not really care about the final rendered value here. That's a matter of implementation. So instead, we will call the template choice + the values that fills the blanks the $props$. And we will focus only on the sub-part of the $renderer$ function that computes the props, the $propsGetter$.
 
@@ -231,5 +231,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY2OTA5NzUwXX0=
+eyJoaXN0b3J5IjpbMTcwNTI4ODQ2OV19
 -->
