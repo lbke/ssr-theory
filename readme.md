@@ -217,11 +217,18 @@ export async function computePossibleRequests = (): Array<Request> => {
     return [...]
 }
 // for both request-time and build-time rendering
-// /!\ this function will run for each request, even when static rendering (in order to get the right cache key). In Next.js, for static pages, that corresponds to the router of the "hidden" Node.js server provided by Next + your custom getStaticProps. For SSR, that's getServerSideProps.
+/* 
+/!\ this function will run for each request, even when static rendering 
+(in order to get the right cache key). 
+In Next.js, for static pages, that corresponds to the router of 
+the "hidden" Node.js server provided by Next + your custom getStaticProps. 
+For SSR, that's getServerSideProps.
+*/
 export async function propsGetter(req: Request): Props {
     /// do your thing
     return {...}
 }
+
 // for Incremental Static Regeneration and request-time rendering
 // this affects the renderer function = the React component rendering, which is the slow part
 export async TTL = 5
@@ -233,6 +240,7 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = 0$ => this is server-side rendering.
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
+- You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridration between stati
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzOTU0NjY1XX0=
+eyJoaXN0b3J5IjpbLTExNDE1MDgyMDNdfQ==
 -->
