@@ -38,7 +38,7 @@ So, there is an infinite number of requests if you consider all parameters, but 
 ### Takeaways
 
 - server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and outputs some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
-- what matters are the value you will use to fill the blanks your template, the props.
+- what matters are the value you will use to fill the blanks your template: the props.
 - the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the nature of the request attributes you'll want to consider to compute the result.
 
 ## Rendering at build time
@@ -231,5 +231,5 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNTI4ODQ2OV19
+eyJoaXN0b3J5IjpbMTQ5ODY0OTM3OV19
 -->
