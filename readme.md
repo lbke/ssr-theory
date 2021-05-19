@@ -19,26 +19,24 @@ The common point is that both renders on the server instead of the user's comput
 
 The result of server-rendering is a page. Most often, a combination of HTML, JS and CSS.
 
-A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props".
+A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props". 
+The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
 
 So, a page is a rendered template. Like a text with blanks, whose blanks have been filled.
 
-The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
 
 ### Request = input of a server-render
 
 A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
 
 
-However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expects a request as its input.
-
-Except that it is not a full HTTP request, but only some part of it: mainly the URL.
+However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
 For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.whatever/article-1" they get article 1? Right?
 
 The URL is one of the attribute of the user request, and this attributes helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.
 
-Keeep in mind that there is no such things as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always some servers and HTTP requests around.
+Keep in mind that there is no such thing as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always some servers and HTTP requests around.
 
 So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.
 
@@ -112,7 +110,7 @@ At build time, there is no HTTP request happening. Yet, build-time rendering is 
 
 If you build 10 pages for 10 articles, you are precomputing 10 requests, one for each URL. Existing frameworks are often adopting this "URL" vision of build-time rendering. 
 
-Yet, they could also consider other requests attributes such as cookies, that would work exactly the same. For instance, you could prerender a dark mode and light mode version of your interface, based on a cookie.
+Yet, they could also consider other request attributes such as cookies, that would work exactly the same. For instance, you could prerender a dark mode and light mode version of your interface, based on a cookie.
 
 Therefore, to keep our definition consistent, we can suppose that the render function is still using a request as input, except that it is limited to parameters you can know at build-time.
 
@@ -139,7 +137,7 @@ Let's note $R_{getter}$ the set of all requests that a $propsGetter$ takes as in
 
 For instance, if we only use attribute 1 (say, the URL), and attribute 4 (say, the cookie that sets light or dark mode):
 $$
-R_{getter} = R_{\{attr_1, attr_4\}} \iff \forall req \in R; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
+R_{getter} = R_{\{attr_1, attr_4\}} \iff \forall req \in R_{getter}; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
 $$
 
 Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
@@ -267,13 +265,13 @@ So, in our terminology, a Next.js "page" is a template + a props getter function
 
 ### Static Site Generation
 
-Static Site Generation is a form build-time rendering. However, it does accept only one attribute as input: the request URL (and thus, in our definition, anything that can be derived from this URL). 
+Static Site Generation is a form build-time rendering. However, it does accept only one attribute as input: the request URL. 
 
 This includes the URL parameters as well. So, a page always have a base path, for instance, `/blog/articles/:id `. In Next.js, this corresponds specifically to its position in the `pages` folder. But it can also have "parameterized paths", which are called dynamic routes : that's just the base path + some route parameters. For instance, `/blog/articles/12`.
 
 So, Next implicitly defines an additional build-time eligibility rule like follow:
 $$
-R_{getter} \subset RB \implies \forall req \in R_{getter}; propsGetter(req)= propsGetter(req_{url})
+R_{getter} \subset RB \implies \forall req \in R_{getter}; propsGetter(req)= propsGetter(req_{\{url\}})
 $$
 The props must only depends on the considered route or URL. Otherwise you can't use the static props computation functions provided by Next.
 
