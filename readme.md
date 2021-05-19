@@ -2,32 +2,94 @@
 
 And why they are actually the same thing.
 
-## High-level overview
+## Definitions
 
-A renderer is a function that takes an HTTP request as input, and outputs a web page.
+### Server rendering
+
+There are a lot of definitions in the wild. Let's stick to the most basic one : server rendering is rendering a web page, on the server, as opposed to rendering in the client browser.
+
+This includes:
+
+- build-time server rendering, also known as static rendering, or static site generation (SSG). This is when you render the pages of your website when you publish it, once for all.
+- request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
+
+The common point is that both renders on the server instead of the user's computer. The difference rely on when the render happens.
+
+### Page, template and props
+
+The result of server-rendering is a page. Most often, a combination of HTML, JS and CSS.
+
+A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props".
+
+So, a page is a rendered template. Like a text with blanks, whose blanks have been filled.
+
+The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
+
+### Request = input of a server-render
+
+A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
+
+
+However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expect a request as its input.
+
+Except that it is not a full HTTP request, but only some part of it: mainly the URL.
+
+For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.com/article-1" they get article 1? Right?
+
+The URL is one of the attribute of the user request, and this attributes helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.
+
+Keeep in mind that there is no such things as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there still are some servers and HTTP requests around.
+
+So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.
+
+### Steps of server rendering
+
+Server rendering can be split in following steps
+
+1. For a given request, select the right template (usually based on the URL)
+2. Compute the props based on user's request
+3. Render the page = the templates filled with the props
+
+Request-time rendering does this for every HTTP request.
+
+Build-time rendering does this in advance. Then, when an HTTP request is received, the server will simply return the right rendered page:
+
+1. Precompute the pages for various requests (see steps above)
+2. For a given request, pick the right page
+
+### Formally
+
+A $renderer$ function takes requests as input and returns pages.
 
 $$
-renderer(req)=res
+renderer(req) \mapsto page\\
+\left\{
+        \begin{array}{ll}
+req = (attr_i)\\
+page = (HTML, CSS, JS)
+    \end{array}
+\right.
 $$
 
-A request is a set of attributes. It's the HTTP request, but also the information that can be derived from it (current user, the slug of the article the user wants to read...).
+Request-time rendering does this for every request. Build-time rendering caches the page once for all during the build.
 
-A result is a rendered template. Like a text with blanks, whose blanks have been filled. The template could be a React component, or a template written in more classical language, like EJS, PUG, PHP... 
-
-Therefore, the rendered page is entirely defined by the choice of the template and by the filling values.
-
-We do not really care about the final rendered value here. That's a matter of implementation. So instead, we will call the template choice + the values that fills the blanks the $props$. And we will focus only on the sub-part of the $renderer$ function that computes the props, the $propsGetter$.
-
-Therefore, we will focus on the following function:
+If we go step by step, we can also define the following intermediate function:
 $$
-propsGetter(req) = props\\
+templateGetter(req) \mapsto props\\
+propsGetter(req)\mapsto props\\
+template(props) \mapsto page\\
+renderer = templateGetter(req)(propsGetter(req))\\
 \left\{
         \begin{array}{ll}
 req = (attr_i)\\
 props = (prop_j)\\
+page = (HTML, CSS, JS)
     \end{array}
 \right.
 $$
+
+We do not really care about the final rendered value here. That's a matter of implementation. The template choice is also most often directly related to the URL. Therefore, the $propsGetter$ is the most important function here, the function that computes the values needed for rendering based on the request.
+
 Attributes of a request may be of different nature. We can represent them as a flat dictionary or a vector.
 
 - Discrete and finite : the user id, some url parameters
@@ -39,28 +101,50 @@ So, there is an infinite number of requests if you consider all parameters, but 
 
 - server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and outputs some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
 - what matters are the value you will use to fill the blanks your template: the props.
+- build-time rendering, or "static" rendering, is just precomputed server-side rendering
 - the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the nature of the request attributes you'll want to consider to compute the result.
 
-## Rendering at build time
+## Build-time rendering aka static rendering
 
-At build time, there is no HTTP request happening. However, to keep our definition consistent, we can suppose that the render function is still using a request as input, except that it is limited to parameters you can know at build-time.
-$$
-\forall req; propsGetter(req)=propsGetter(req_{build})
-$$
-But what is this $req_{build}$ object? Let's define it in terms of ensemble of possible requests instead. To be eligible for build-time rendering, our set of requests must have following properties:
+### Build-time rendering is precomputed request-time rendering
 
-- It's a subset of the set of all possible requests, which we'll call $R$
+At build time, there is no HTTP request happening. Yet, build-time rendering is still heavily based on the concept of request, as explained before: it's just precomputation of a bunch of requests.
+
+If you build 10 pages for 10 articles, you are precomputing 10 requests, one for each URL. Existing frameworks are often adopting this "URL" vision of build-time rendering. 
+
+Yet, they could also consider other requests attributes such as cookies, that would work exactly the same. For instance, you could prerender a dark mode and light mode version of your interface, based on a cookie.
+
+Therefore, to keep our definition consistent, we can suppose that the render function is still using a request as input, except that it is limited to parameters you can know at build-time.
+
+### What can be built: the 3 rules of build-eligibility
+
+Let's try to figure when build-time rendering is possible or not. Since build-time rendering is precomputing some renders for a set of requests, let's define the "build-eligibility" in terms of ensemble of possible requests instead. 
+
+To be eligible for build-time rendering, our set of requests must have following properties:
+
+- It's a subset of the set of all possible requests (the requests are valid and make sense, like URL are correct URLs etc.)
 - It must be a finite set, otherwise build time would be infinite
 - Values should be known at build time and stay constant afterward
 
-Let's call $R_{getter}$ the set of requests that a given $propsGetter$ takes into account. It's equivalent to picking a few attributes that your renderer function actually uses.
+So, build-eligibility depends a lot on the attributes you consider in the request. If you have 2 modes, light and dark, that works. 10 articles on your blog, that works. 
+But if you want to prerender one page per day, you'll be in trouble.
+
+### Formally
+
+Let's note $R$ the set of all possible HTTP requests in the world.
+
+Let's note $R_{getter}$ the set of all requests that a $propsGetter$ takes as input. It depends on which part of the request $propsGetter$ is actually using to compute the props.
+
+Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
+Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot, build-eligiblity can be written like this: $R_{getter} \subset RB$.
+So, a valid build time request is any set of attributes that belongs to any valid $R_{build}$ ensemble included in $RB$. 
+
+For instance, if we only use attribute 1 (say, the URL), and attribute 4 (say, the cookie that sets light or dark mode):
 $$
 R_{getter} = R_{\{attr_1, attr_4\}} \iff \forall req \in R; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
 $$
 
-### The 3 static rules of build-eligibility
-
-We note $R$ the set of all possible requests. A build-eligible set of requests would have to respect those 3 conditions:
+A build-eligible set of requests would have to respect those 3 conditions:
 
 $$
 R_{build} \subset R\\
@@ -68,14 +152,13 @@ R_{build} \subset R\\
 R_{build}(t) = R_{build}
 $$
 
-Rule 1 is that obviously the request should make sense and be a "possible" request. Rule 2 is the "rule of finiteness", rule 3 is the "rule of staticness".
+Rule 1 is that obviously the request should make sense and be a "possible" request. 
 
-So, a valid build time request is any set of attributes that belongs to any valid $R_{build}$ ensemble. 
+Rule 2 is the "rule of finiteness"
 
-Let's call $RB$ the set of all build-eligible sets. Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot :
-if $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and it belongs to $RB$. 
+Rule 3 is the "rule of staticness".
 
-Which can be written like this: $R_{getter} \subset RB$.
+If $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and it belongs to $RB$. 
 
 Congratulations, you can enjoy static rendering from an ensemblist point of view.
 
