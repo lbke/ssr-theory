@@ -13,7 +13,7 @@ This includes:
 - build-time server rendering, also known as static rendering, or static site generation (SSG). This is when you render the pages of your website when you publish it, once for all.
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
 
-The common point is that both renders on the server instead of the user's computer. The difference rely on when the render happens.
+The common point is that both renders on the server instead of the user's computer. The difference relies on when the render happens.
 
 ### Page, template and props
 
@@ -30,21 +30,21 @@ The template could be typically a React component, or a template written in more
 A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
 
 
-However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expect a request as its input.
+However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expects a request as its input.
 
 Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
-For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.com/article-1" they get article 1? Right?
+For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.whatever/article-1" they get article 1? Right?
 
 The URL is one of the attribute of the user request, and this attributes helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.
 
-Keeep in mind that there is no such things as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there still are some servers and HTTP requests around.
+Keeep in mind that there is no such things as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always some servers and HTTP requests around.
 
 So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.
 
 ### Steps of server rendering
 
-Server rendering can be split in following steps
+Server rendering can be split in following steps:
 
 1. For a given request, select the right template (usually based on the URL)
 2. Compute the props based on user's request
@@ -75,10 +75,10 @@ Request-time rendering does this for every request. Build-time rendering caches 
 
 If we go step by step, we can also define the following intermediate function:
 $$
-templateGetter(req) \mapsto props\\
+templateGetter(req) \mapsto template\\
 propsGetter(req)\mapsto props\\
 template(props) \mapsto page\\
-renderer = templateGetter(req)(propsGetter(req))\\
+renderer(req) = templateGetter(req)(propsGetter(req))\\
 \left\{
         \begin{array}{ll}
 req = (attr_i)\\
@@ -118,16 +118,18 @@ Therefore, to keep our definition consistent, we can suppose that the render fun
 
 ### What can be built: the 3 rules of build-eligibility
 
-Let's try to figure when build-time rendering is possible or not. Since build-time rendering is precomputing some renders for a set of requests, let's define the "build-eligibility" in terms of ensemble of possible requests instead. 
+Intuitively, build-eligibility depends a lot on the attributes you consider in the request. 
+If you have 2 modes, light and dark, that works. 10 articles on your blog, that works. 
+But if you want to prerender one page per atom in the universe, you'll be in trouble.
+
+Let's try to figure when build-time rendering is possible or not more formally. Since build-time rendering is precomputing some renders for a set of requests, let's define the "build-eligibility" in terms of ensemble of possible requests instead. 
 
 To be eligible for build-time rendering, our set of requests must have following properties:
 
-- It's a subset of the set of all possible requests (the requests are valid and make sense, like URL are correct URLs etc.)
+- It's a subset of the set of all possible requests (the requests are valids and make sense, like URL are correct URLs etc.)
 - It must be a finite set, otherwise build time would be infinite
 - Values should be known at build time and stay constant afterward
 
-So, build-eligibility depends a lot on the attributes you consider in the request. If you have 2 modes, light and dark, that works. 10 articles on your blog, that works. 
-But if you want to prerender one page per day, you'll be in trouble.
 
 ### Formally
 
@@ -135,14 +137,15 @@ Let's note $R$ the set of all possible HTTP requests in the world.
 
 Let's note $R_{getter}$ the set of all requests that a $propsGetter$ takes as input. It depends on which part of the request $propsGetter$ is actually using to compute the props.
 
-Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
-Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot, build-eligiblity can be written like this: $R_{getter} \subset RB$.
-So, a valid build time request is any set of attributes that belongs to any valid $R_{build}$ ensemble included in $RB$. 
-
 For instance, if we only use attribute 1 (say, the URL), and attribute 4 (say, the cookie that sets light or dark mode):
 $$
 R_{getter} = R_{\{attr_1, attr_4\}} \iff \forall req \in R; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
 $$
+
+Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
+Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot, build-eligiblity can be written like this: $R_{getter} \subset RB$.
+
+So, a valid build-time request is any set of attributes that belongs to any valid $R_{build}$ ensemble included in $RB$. 
 
 A build-eligible set of requests would have to respect those 3 conditions:
 
@@ -160,36 +163,47 @@ Rule 3 is the "rule of staticness".
 
 If $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and it belongs to $RB$. 
 
+Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req$ included in $R_{getter}$, supposing that $R_{getter} \subset RB$.
+
 Congratulations, you can enjoy static rendering from an ensemblist point of view.
 
 ### Implementation
 
-Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req$ included in $R_{getter}$, supposing that $R_{getter} \subset RB$.
-
-But how do you actually compute this set? Here are the typings and the final build-time rendering function:
+Here are the typings and the final build-time rendering function:
 
 ```ts
 type Req = Object
 type Props = Object
-type HTML = string
+type Page = string // some HTML
+
 type RBuildComputer = () => Array<Req> // must respect the build-eligbility conditions
+type Template = (Props) => Page 
+type TemplateGetter = (req: Req) => Template
 type PropsGetter = (req: Req) => Props
-type Renderer = (props: Props) => HTML
 
-// compute the props for each possible request
-function buildTimeProps(RGetter: RBuildComputer, propsGetter: PropsGetter): Array<Props> => {
-    return RGetter().map(req => propsGetter(req))
-}
-
-// finally compute the HTML based on those props. But this is not the interesting part here.
-function buildTimeRender = (computedBuildTimeProps: Array<Props>, render: Renderer): Array<HTML> => {
-    return computedBuildTimeProps.map(render)
-}
+type Renderer = (req: Req) => Page // = TemplateGetter(Req)(PropsGetter(Req))
 ```
 
-This doesn't feel very natural. That's because requests are supposed to be random events, triggered by the user, so we are not used to list all the possible requests for a given endpoint.
+Example:
+```ts
+function rBuildComputer () { return [{url: "article/1"}, { url: "article/2"}] }
 
-Also, when actually serving the pages, this means you still need some request processing logic. The final HTML/CSS/JS result may be cached, the result of the $render$ function, but you still need to run the $propsGetter$ function again for each request. 
+function articleTemplate ({articleId}) { return  `Reading article ${articleId}` }
+function templateGetter (req) {
+    if (req.match(/article/)) return articleTemplate
+    return () => `Default template` 
+}
+function propsGetter (req) {
+    return { articleId: req.params.articleId }
+}
+function renderer = (req){
+    return templateGetter(req)(propsGetter(req))
+} 
+```
+
+The `rBuildComputer` function doesn't feel very natural. That's because requests are supposed to be random events, triggered by the user, so we are not used to list all the possible requests for a given endpoint.
+
+Also, when actually serving the pages, this means you still need some request processing logic. The final HTML/CSS/JS result may be cached, the result of the `renderer` function, but you still need to check the request URL everytime to get the right page in this example. 
 
 We'll describe how Next.js solves a simplified version of this problem later-on.
 
@@ -198,11 +212,11 @@ We'll describe how Next.js solves a simplified version of this problem later-on.
 - By selecting the attributes you consider as input of your renderer function, you define an $R_{getter}$ set. If it respects the 3 build rules, you can enjoy static rendering.
 - Example: rendering a finite number of blog articles. $R_{getter}$ is the list of all your articles URL, it's finite, doesn't change. If you write a new article, you can of course rebuild to get fresh data (we'll dig that problem later).
 - This is theoretical, in real life computing the set of all possible requests feels unnatural.
-- There is no such thing as a website without a server. Static hosts are just extremely basic server that can only process the URL part of the request, but they still do process the request. They act as $propsGetter$ functions in our model.
+- There is no such thing as a website without a server. Static hosts are just extremely basic server that can only process the URL part of the request, but they still do process the request. 
 
 ## Rendering at request time
 
-As soon as $R_{getter}$ violates one of the 3 conditions to be a build-eligible set... you cannot build-time render anymore :( You are good to do some request-time server-side rendering, meaning you'll need to compute the render function for each incoming request (so both the $propsGetter$ and the $renderer$).
+As soon as the request attributes you use to compute violates one of the 3 conditions to be a build-eligible set... you cannot build-time render anymore :( You are good to do some request-time server-side rendering, meaning you'll need to compute the render function for each incoming request.
 
 Examples :
 
@@ -211,14 +225,24 @@ Examples :
 
 Let's focus on this "you cannot rebuild every time". Actually, this definition is a bit trickier.
 
-
 ### The 4th dynamic rule of build-eligibility
 
-Suppose that rendering time is constant for all requests, for the sake of simplicity. Let's call it $t_{render}$.
+When you add a new article for your awesome blog, or someone signs up to your equally awesome SaaS product, you are making your build-time rendered website obsolete. You need a rebuild.
 
-Let's also define the time between 2 evolutions of the set of possible values of an attributes. Basically, the time before you add a new article for your awesome blog, or someone signs up to your equally awesome SaaS product. 
+Suppose that rendering time is constant for all requests, for the sake of simplicity. 
 
-Let's note this time $t_{\Delta R_{getter}}$ (time for a variation of $R_{getter}$ to happen).
+That rendering time must be smaller than the time between 2 changes of your list of articles, otherwise you will not have enough time to rebuild your website.
+
+Examples:
+
+- the list of articles on your personal blog only evolves daily/weekly. A rebuild takes a few minutes => articles are eligible for build-time rendering
+- the list of users on your brilliant SaaS product evolves a lot, you can get 10 new users a day (or more, who knows) => you are not eligible
+
+### Formally
+
+Let's call it $t_{render}$ the execution time of $renderer$.
+
+Let's note the time for a variation of $R_{getter}$ to happen $t_{\Delta R_{getter}}$.
 
 $$
 t_{render} > t_{\Delta R_{getter}} \implies R_{getter} \not\subset RB  \\
@@ -226,14 +250,9 @@ $$
 
 It means that if you can rebuild faster than the list of possible values, for all attributes, the build-eligibility still holds. But if you rebuild slower, it doesn't not, you need request-time rendering.
 
-Examples:
-
-- the list of articles on your personal blog only evolves daily/weekly. A rebuild takes a few minutes => articles are eligible for build-time rendering
-- the list of users on your brilliant SaaS product evolves a lot, you can get 10 new users a day (or more, who knows) => you are not eligible
-
 ### Takeaways
 
-- there are actually 4 rules for build-eligibility, one of them depends on how fast the possible values evolves for each input attributes. Build-time rendering makes sense only for slowly changing values (a few seconds being a minimum, a few minutes more appropriate).
+- there are actually 4 rules for build-eligibility, one of them depends on how fast the possible values evolves for each input attributes. Build-time rendering makes sense only for slowly changing values (a few seconds being a minimum, a few minutes more appropriate, a few days the best).
 - request-time server rendering is more an "exception" than the default. Build-time rendering should be preferred whenever possible.
 
 ## Next.js vision of rendering
