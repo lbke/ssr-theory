@@ -343,6 +343,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3OD
-QzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5Mz
+MwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
