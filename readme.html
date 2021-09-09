@@ -239,33 +239,63 @@ The props must only depends on the considered route or URL. Otherwise you can’
 <p>There is still a strong limitation: props are still entirely defined by the URL. You cannot process the request with a custom function in the current implementation.</p>
 <h2 id="a-more-generic-server-rendering">A more generic server-rendering?</h2>
 <p>Based on this model, here is what could be a unified view of SSR and SSG, for a Next.js page:</p>
-<pre class=" language-ts"><code class="prism  language-ts"><span class="token comment">// the template</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">MyPage</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">:</span> Props<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span>
+<pre class=" language-ts"><code class="prism  language-ts"><span class="token comment">// The actual page, written with a SPA framework like React, Vue, Svelte...</span>
+<span class="token keyword">type</span> <span class="token function-variable function">Page</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">:</span> Props<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>HTML<span class="token punctuation">,</span> CSS<span class="token punctuation">,</span> JS<span class="token punctuation">]</span>
 
-<span class="token comment">// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs</span>
-<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> computePossibleRequests <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>Request<span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment">// do your thing</span>
-    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-<span class="token comment">// for both request-time and build-time rendering</span>
-<span class="token comment">/* 
-/!\ this function will run for each request, even when static rendering 
-(in order to get the right cache key). 
-In Next.js, for static pages, that corresponds to the router of 
-the "hidden" Node.js server provided by Next + your custom getStaticProps. 
-For SSR, that's getServerSideProps.
-*/</span>
-<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">propsGetter</span><span class="token punctuation">(</span>req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> Props <span class="token punctuation">{</span>
-    <span class="token comment">/// do your thing</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token comment">// Compute the requests we want to prerender</span>
+<span class="token comment">// Example : all the articles of a blog</span>
+<span class="token keyword">type</span> <span class="token function-variable function">computePossibleRequests</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Promise<span class="token operator">&lt;</span><span class="token keyword">Array</span><span class="token operator">&lt;</span>Request<span class="token operator">&gt;&gt;</span>
 
-<span class="token comment">// for Incremental Static Regeneration and request-time rendering</span>
-<span class="token comment">// this affects the renderer function = the React component rendering, which is the slow part</span>
-<span class="token comment">// (this could probably be a function in a more advanced version, eg to control caching strategy based on the time of the day or activity peaks for instance)</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> TTL <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token comment">// For a given request, compute the right props</span>
+<span class="token comment">// Example : get the article 42 when URL is « /article/42 »</span>
+<span class="token keyword">type</span> <span class="token function-variable function">propsGetter</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token operator">=&gt;</span> Promise<span class="token operator">&lt;</span>Props<span class="token operator">&gt;</span>
+
+<span class="token comment">// Time the rendered page should stay in the cache for a given set of props</span>
+<span class="token keyword">type</span> TTL <span class="token punctuation">:</span> Number
 </code></pre>
-<p>Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. Tada.</p>
+<p>Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. Tada. You don’t need really have to differentiate <code>getServerSideProps</code> and <code>getStaticProps</code>.</p>
+<p>And an exemple implementation for paid pages on a blog:</p>
+<pre class=" language-ts"><code class="prism  language-ts"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">BlogPage</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">:</span> Props<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+<span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>paidArticle<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>paidArticle<span class="token punctuation">.</span>content<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// the requests you'd like to precompute. </span>
+<span class="token comment">// In Next.js, this is currently limited to a list of URLs for public content.</span>
+<span class="token comment">// Here, we also want to pre-render private paid articles</span>
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> computePossibleRequests <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>Request<span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> paidArticles <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPaidArticles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> paidArticles<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>article <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+       urlParams<span class="token punctuation">:</span> <span class="token punctuation">{</span> id<span class="token punctuation">:</span> article<span class="token punctuation">.</span>id<span class="token punctuation">}</span><span class="token punctuation">,</span>
+       <span class="token comment">// those articles are only available to paid users</span>
+       header<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"X-PAID"</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// This is the tricky part: this function will be run during static render </span>
+<span class="token comment">// for all the private articles of the database, </span>
+<span class="token comment">// and also be run during request-time render</span>
+<span class="token comment">// There is no way to tell whether it's static or request-time render, </span>
+<span class="token comment">// because you don't need to! </span>
+<span class="token comment">// Think of Next.js getInitialProps, but with the request also available</span>
+<span class="token comment">// during static render</span>
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">propsGetter</span><span class="token punctuation">(</span>req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> Props <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> urlParams<span class="token punctuation">,</span> header <span class="token punctuation">}</span> <span class="token operator">=</span> req
+    <span class="token comment">// We argue that checking authentication in "getServerSideProps" is an anti-pattern, </span>
+    <span class="token comment">// and since we also want to support static render, </span>
+    <span class="token comment">// security is checked and headers are set by an upfront server</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>header<span class="token punctuation">[</span><span class="token string">"X-PAID"</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token keyword">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">const</span> privateArticle <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPrivateArticle</span><span class="token punctuation">(</span>urlParams<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+       <span class="token keyword">return</span> <span class="token punctuation">{</span> privateArticle <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+	    <span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">"/subscribe"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// we rerun propsGetter every minute to get a fresh version of the article</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> TTL_MS <span class="token operator">=</span> <span class="token number">60000</span>
+</code></pre>
+<p>Possible scenarios depending on the caching strategy:</p>
 <ul>
 <li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>T</mi><mi>L</mi><mo>=</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">TTL = \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">TT</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord">∞</span></span></span></span></span> =&gt; this is static rendering. You must define <code>computePossibleRequests</code> as well, to get the list of pages to render.</li>
 <li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>T</mi><mi>L</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">TTL = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">TT</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0</span></span></span></span></span> =&gt; this is server-side rendering.</li>
