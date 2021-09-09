@@ -334,19 +334,13 @@ export const BlogHome = (props: Props) => (
 export async function computePossibleRequests = (): Array<Request> => {
     const privateArticles = await fetchPrivateArticles()
     return privateArticles.map((article => ({
-       urlParams: { id: article.id },
-       header: "X
+       url: `private-articles/${article.id}`,
+       // those articles are only available to authorized users
+       header: "X-AUTHORIZED"
     })
 }
-// for both request-time and build-time rendering
-/* 
-/!\ this function will run for each request, even when static rendering 
-(in order to get the right cache key). 
-In Next.js, for static pages, that corresponds to the router of 
-the "hidden" Node.js server provided by Next + your custom getStaticProps. 
-For SSR, that's getServerSideProps.
-*/
 export async function propsGetter(req: Request): Props {
+    const { url, header } = req
     /// do your thing
     return {...}
 }
@@ -365,6 +359,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzNDE2Mjg3OCwtMTI2MjE2MjMzOSw5OT
-k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbODcyMjMzNjQzLC0xMjYyMTYyMzM5LDk5OT
+Q4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
