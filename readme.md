@@ -366,14 +366,12 @@ export async function propsGetter(req: Request): Props {
 export const TTL_MS = 60000
 ```
 
-
-
 - $TTL = \infty$ => this is static rendering. You must define `computePossibleRequests` as well, to get the list of pages to render.
 - $TTL = 0$ => this is server-side rendering.
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NjI5MjI1MiwtMTI2MjE2MjMzOSw5OT
+eyJoaXN0b3J5IjpbLTExMTM5NzE4NCwtMTI2MjE2MjMzOSw5OT
 k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
