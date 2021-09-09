@@ -325,8 +325,8 @@ And an exemple implementation:
 ```ts
 export const BlogPage = (props: Props) => (
 <div>
-	<p>{props.privateArticle.title}</p>
-	<p>{props.privateArticle.content}</p>
+	<p>{props.paidArticle.title}</p>
+	<p>{props.paidArticle.content}</p>
 </div>
 )
 
@@ -336,8 +336,8 @@ export async function computePossibleRequests = (): Array<Request> => {
     const privateArticles = await fetchPrivateArticles()
     return privateArticles.map((article => ({
        urlParams: { id: article.id},
-       // those articles are only available to authorized users
-       header: {"X-AUTHORIZED": true}
+       // those articles are only available to paid users
+       header: {"X-PAID": true}
     })
 }
 // this function will be run during static render for all the private
@@ -345,11 +345,12 @@ export async function computePossibleRequests = (): Array<Request> => {
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
     // we suppose that this header is secured by an upfront server
+    // so we don't check auth again here
     if (header["X-AUTHORIZED"] === true) {
        const privateArticle = await fetchPrivateArticle(urlParams.id)
        return { privateArticle }
-    } else {        
-       redirect("/login")
+    } else {
+    
     }
 }
 // we rerun propsGetter every minute to get a fresh version of the article
@@ -364,6 +365,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwNzUzNTk4NCwtMTI2MjE2MjMzOSw5OT
-k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTE3MjEwNzg3NTEsLTEyNjIxNjIzMzksOT
+k5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
