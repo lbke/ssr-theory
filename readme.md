@@ -330,7 +330,8 @@ export const BlogPage = (props: Props) => (
 </div>
 )
 
-// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs for public c
+// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs for public content.
+// Here, we also want to pre-render private paid articles
 export async function computePossibleRequests = (): Array<Request> => {
     const privateArticles = await fetchPrivateArticles()
     return privateArticles.map((article => ({
@@ -360,6 +361,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIxMTcxOTk3LC0xMjYyMTYyMzM5LDk5OT
-Q4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTIzNzUzMjU2OSwtMTI2MjE2MjMzOSw5OT
+k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
