@@ -306,10 +306,25 @@ There is still a strong limitation: props are still entirely defined by the URL.
 ## A more generic server-rendering?
 
 Based on this model, here is what could be a unified view of SSR and SSG, for a Next.js page:
+```ts
+// The actual page, written with a SPA framework like React, Vue, Svelte...
+type Page = (props: Props) => [HTML, CSS, JS]
 
+// Compute the requests we want to prerender
+// Example : all the articles of a blog
+type computePossibleRequests = () => Promise<Array<Request>>
+
+// For a given request, compute the right props
+// Example : get the article 42 when URL is « /article/42 »
+type propsGetter = (req: Request)=> Promise<Props>
+
+// Time the rendered page should stay in the cache for a given set of props
+type TTL : Number
+```
+And an exemple implementation:
 ```ts
 // the template
-export const MyPage = (props: Props) => { return <>...</>}
+export const BlogHome = (props: Props) => { return <ul>{props.privateArticles.map((article) <ul/>}
 
 // the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs
 export async function computePossibleRequests = (): Array<Request> => {
@@ -343,6 +358,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5Mz
-MwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTQyMDUwMTgwMiwtMTI2MjE2MjMzOSw5OT
+k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
