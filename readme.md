@@ -321,7 +321,7 @@ type propsGetter = (req: Request)=> Promise<Props>
 // Time the rendered page should stay in the cache for a given set of props
 type TTL : Number
 ```
-And an exemple implementation:
+And an exemple implementation for paid pages on a blog:
 ```ts
 export const BlogPage = (props: Props) => (
 <div>
@@ -344,8 +344,10 @@ export async function computePossibleRequests = (): Array<Request> => {
 // This is the tricky part: this function will be run during static render 
 // for all the private articles of the database, 
 // and also be run during request-time render
-// there is no way to tell whether it's static or request-time render, 
-// because you don't need to!
+// There is no way to tell whether it's static or request-time render, 
+// because you don't need to! 
+// Think of Next.js getInitialProps, with the request also available
+// during static render
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
     // We argue that checking authentication in "getServerSideProps" is an anti-pattern, 
@@ -370,6 +372,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExODAzNDM0MiwtMTI2MjE2MjMzOSw5OT
-k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbOTMwMDk5NSwtMTI2MjE2MjMzOSw5OTk0OD
+E4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
