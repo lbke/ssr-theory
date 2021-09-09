@@ -330,7 +330,8 @@ export const BlogPage = (props: Props) => (
 </div>
 )
 
-// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs for public content.
+// the requests you'd like to precompute. 
+// In Next.js, this is currently limited to a list of URLs for public content.
 // Here, we also want to pre-render private paid articles
 export async function computePossibleRequests = (): Array<Request> => {
     const paidArticles = await fetchPaidArticles()
@@ -340,11 +341,16 @@ export async function computePossibleRequests = (): Array<Request> => {
        header: {"X-PAID": true}
     })
 }
-// this function will be run during static render for all the private articles of the database, and also be run during request-time render
-// there is no way to tell whether it's static or request-time render, because you don't need to!
+// This is the tricky part: this function will be run during static render 
+// for all the private articles of the database, 
+// and also be run during request-time render
+// there is no way to tell whether it's static or request-time render, 
+// because you don't need to!
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
-    // We argue that checking authentication in "getServerSideProps" is an anti-pattern, and since we also want to support static render, security is checked and headers are set by an upfront server
+    // We argue that checking authentication in "getServerSideProps" is an anti-pattern, 
+    // and since we also want to support static render, 
+    // security is checked and headers are set by an upfront server
     if (header["X-PAID"] === true) {
        const privateArticle = await fetchPrivateArticle(urlParams.id)
        return { privateArticle }
@@ -364,6 +370,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjg1NDU3MzAsLTEyNjIxNjIzMzksOT
-k5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMjExODAzNDM0MiwtMTI2MjE2MjMzOSw5OT
+k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
