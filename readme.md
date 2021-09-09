@@ -341,12 +341,12 @@ export async function computePossibleRequests = (): Array<Request> => {
     })
 }
 // this function will be run during static render for all the private articles of the database, and also be run during request-time render
-// there is no way to tell whether it's static or request-time render, and that's expected!
+// there is no way to tell whether it's static or request-time render, because you don't need to!
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
     // this header has to be set by an upfront server
-    // you cannot check if the user has a subscription here, because
-    // you might be 
+    // all security checks are done by an upfront server/middleware,
+    // here we focus only on the render
     if (header["X-PAID"] === true) {
        const privateArticle = await fetchPrivateArticle(urlParams.id)
        return { privateArticle }
@@ -366,6 +366,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5MDUzNzM3LC0xMjYyMTYyMzM5LDk5OT
+eyJoaXN0b3J5IjpbMTU1OTgxOTI1LC0xMjYyMTYyMzM5LDk5OT
 Q4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
