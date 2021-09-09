@@ -336,11 +336,13 @@ export const BlogPage = (props: Props) => (
 // In Next.js, this is currently limited to a list of URLs for public content.
 // Here, we also want to pre-render private paid articles.
 // When the user opens the page:
-// 1. The upfront server checks authentication, subscription
+// 1. An upfront server checks authentication, subscription
 // and set the right headers securely.
-// 2. The router will point ma
-// matching requests to this page.
-// If a request doesn't match those parameters, it will lead to a 404.
+// 2. If the url params and headers are matching an existing pre-rendered
+// request, the page will be rendered immediatalt.
+// 2bis. If there is no match, it will lead to a 404 (but you could
+// have a smarter strategy, like letting the upfront server redirect the user
+// to /subscription)
 export async function computePossibleRequests = (): Array<Request> => {
     const paidArticles = await fetchPaidArticles()
     return paidArticles.map((article => ({
@@ -372,7 +374,7 @@ Possible scenarios depending on the caching strategy:
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwMTM4MTI2NCwxNjAyNzM5MzQ2LC0xMj
+eyJoaXN0b3J5IjpbLTk0Mzc1NzczNCwxNjAyNzM5MzQ2LC0xMj
 YyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUw
 MTk4XX0=
 -->
