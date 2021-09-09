@@ -352,7 +352,7 @@ export async function computePossibleRequests = (): Array<Request> => {
     })
 }
 
-// This is the tricky part: this function will be run during static render 
+// This function will be run during static render 
 // for all the private articles of the database, 
 // and also be run during request-time render
 // There is no way to tell whether it's static or request-time render, 
@@ -374,7 +374,7 @@ Possible scenarios depending on the caching strategy:
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMDcyMjg2NCwxNjAyNzM5MzQ2LC0xMj
-YyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUw
-MTk4XX0=
+eyJoaXN0b3J5IjpbLTE4MjU0OTU2ODQsMTYwMjczOTM0NiwtMT
+I2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1
+MDE5OF19
 -->
