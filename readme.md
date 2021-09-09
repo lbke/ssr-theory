@@ -323,14 +323,14 @@ type TTL : Number
 ```
 And an exemple implementation:
 ```ts
-export const BlogHome = (props: Props) => (
-<ul>
-  {props.privateArticles.map((article) => (
-    <li key="article.id">{article.title}</li>
-  ))
-<ul/>)
+export const BlogPage = (props: Props) => (
+<div>
+	<p>{props.privateArticle.title}</p>
+	<p>{props.privateArticle.content}</p>
+</div>
+)
 
-// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs
+// the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs for public c
 export async function computePossibleRequests = (): Array<Request> => {
     const privateArticles = await fetchPrivateArticles()
     return privateArticles.map((article => ({
@@ -341,7 +341,10 @@ export async function computePossibleRequests = (): Array<Request> => {
 }
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
-    if (header
+    if (header["X-AUTHORIZED"] === true) {
+       const privateArticle = await fetchPrivateArticle(urlParams.id)
+       return {privateArticle}
+    }
     /// do your thing
     return {...}
 }
@@ -357,6 +360,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1ODQxOTU3MiwtMTI2MjE2MjMzOSw5OT
-k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbOTIxMTcxOTk3LC0xMjYyMTYyMzM5LDk5OT
+Q4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
