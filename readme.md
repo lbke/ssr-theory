@@ -373,8 +373,12 @@ Possible scenarios depending on the caching strategy:
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
+
+### Changelog
+- 07/2021 - first draft
+- 09/2021 - better example for the generic SSR API
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NTQ3MTQwOSwxNjAyNzM5MzQ2LC0xMj
-YyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUw
-MTk4XX0=
+eyJoaXN0b3J5IjpbLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMT
+I2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1
+MDE5OF19
 -->
