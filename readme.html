@@ -262,9 +262,17 @@ The props must only depends on the considered route or URL. Otherwise you can’
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span>
 
-<span class="token comment">// the requests you'd like to precompute. </span>
+<span class="token comment">// The requests you'd like to precompute</span>
 <span class="token comment">// In Next.js, this is currently limited to a list of URLs for public content.</span>
-<span class="token comment">// Here, we also want to pre-render private paid articles</span>
+<span class="token comment">// Here, we also want to pre-render private paid articles.</span>
+<span class="token comment">// When the user opens the page:</span>
+<span class="token comment">// 1. An upfront middleware/server checks authentication, subscription</span>
+<span class="token comment">// and set the right headers securely (X-PAID in this example).</span>
+<span class="token comment">// 2. If the url params + headers are matching an existing pre-rendered</span>
+<span class="token comment">// request, the page will be rendered immediately.</span>
+<span class="token comment">// 2bis. If there is no match, it will lead to a 404 (but you could</span>
+<span class="token comment">// have a smarter strategy, like letting the upfront server redirect the user</span>
+<span class="token comment">// to a "/subscription" page)</span>
 <span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> computePossibleRequests <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token operator">&lt;</span>Request<span class="token operator">&gt;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> paidArticles <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPaidArticles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> paidArticles<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>article <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -273,7 +281,8 @@ The props must only depends on the considered route or URL. Otherwise you can’
        header<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"X-PAID"</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token comment">// This is the tricky part: this function will be run during static render </span>
+
+<span class="token comment">// This function will be run during static render </span>
 <span class="token comment">// for all the private articles of the database, </span>
 <span class="token comment">// and also be run during request-time render</span>
 <span class="token comment">// There is no way to tell whether it's static or request-time render, </span>
@@ -282,15 +291,8 @@ The props must only depends on the considered route or URL. Otherwise you can’
 <span class="token comment">// during static render</span>
 <span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">propsGetter</span><span class="token punctuation">(</span>req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span> Props <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> urlParams<span class="token punctuation">,</span> header <span class="token punctuation">}</span> <span class="token operator">=</span> req
-    <span class="token comment">// We argue that checking authentication in "getServerSideProps" is an anti-pattern, </span>
-    <span class="token comment">// and since we also want to support static render, </span>
-    <span class="token comment">// security is checked and headers are set by an upfront server</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>header<span class="token punctuation">[</span><span class="token string">"X-PAID"</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token keyword">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token keyword">const</span> privateArticle <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPrivateArticle</span><span class="token punctuation">(</span>urlParams<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
-       <span class="token keyword">return</span> <span class="token punctuation">{</span> privateArticle <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-	    <span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">"/subscribe"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> privateArticle <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPrivateArticle</span><span class="token punctuation">(</span>urlParams<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> privateArticle <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// we rerun propsGetter every minute to get a fresh version of the article</span>
 <span class="token keyword">export</span> <span class="token keyword">const</span> TTL_MS <span class="token operator">=</span> <span class="token number">60000</span>
@@ -302,6 +304,11 @@ The props must only depends on the considered route or URL. Otherwise you can’
 <li><span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>T</mi><mi>L</mi><mo>=</mo><mi>X</mi><mo separator="true">;</mo><mn>0</mn><mo>&lt;</mo><mi>X</mi><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">TTL = X; 0 &lt; X &lt; \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">TT</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.87777em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.07847em;">X</span><span class="mpunct">;</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord">0</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.72243em; vertical-align: -0.0391em;"></span><span class="mord mathnormal" style="margin-right: 0.07847em;">X</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord">∞</span></span></span></span></span> =&gt; this is incremental static regeneration. You may want to prerender some pages as well.</li>
 <li>If <code>propsGetter</code> always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.</li>
 <li>You can always define <code>computePossibleRequests</code> to precompute some pages at build-time, for an hybridation between static render and server render (that’s the point of ISR).</li>
+</ul>
+<h3 id="changelog">Changelog</h3>
+<ul>
+<li>07/2021 - first draft</li>
+<li>09/2021 - better example for the generic SSR API</li>
 </ul>
 
     </div>
