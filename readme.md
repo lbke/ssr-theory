@@ -333,8 +333,8 @@ export const BlogPage = (props: Props) => (
 // the requests you'd like to precompute. In Next.js, this is currently limited to a list of URLs for public content.
 // Here, we also want to pre-render private paid articles
 export async function computePossibleRequests = (): Array<Request> => {
-    const privateArticles = await fetchPrivateArticles()
-    return privateArticles.map((article => ({
+    const paidArticles = await fetchPaidArticles()
+    return paidArticles.map((article => ({
        urlParams: { id: article.id},
        // those articles are only available to paid users
        header: {"X-PAID": true}
@@ -345,12 +345,12 @@ export async function computePossibleRequests = (): Array<Request> => {
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
     // we suppose that this header is secured by an upfront server
-    // so we don't check auth again here
-    if (header["X-AUTHORIZED"] === true) {
+    if (header["X-PAID"] === true) {
        const privateArticle = await fetchPrivateArticle(urlParams.id)
        return { privateArticle }
     } else {
-    
+        // d
+	    redirect("/subscribe")
     }
 }
 // we rerun propsGetter every minute to get a fresh version of the article
@@ -365,6 +365,6 @@ Yes, build-time static rendering is just server-side rendering with a cache + pr
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjEwNzg3NTEsLTEyNjIxNjIzMzksOT
-k5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTU5ODc4MTY2OSwtMTI2MjE2MjMzOSw5OT
+k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
