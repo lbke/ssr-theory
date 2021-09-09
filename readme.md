@@ -332,9 +332,11 @@ export const BlogPage = (props: Props) => (
 </div>
 )
 
-// the requests you'd like to precompute. 
+// The requests you'd like to precompute
 // In Next.js, this is currently limited to a list of URLs for public content.
-// Here, we also want to pre-render private paid articles
+// Here, we also want to pre-render private paid articles.
+// When the user access a page, your upfront server will check 
+// If a request doesn't match those parameters, it will lead to a 404
 export async function computePossibleRequests = (): Array<Request> => {
     const paidArticles = await fetchPaidArticles()
     return paidArticles.map((article => ({
@@ -343,6 +345,7 @@ export async function computePossibleRequests = (): Array<Request> => {
        header: {"X-PAID": true}
     })
 }
+
 // This is the tricky part: this function will be run during static render 
 // for all the private articles of the database, 
 // and also be run during request-time render
@@ -352,15 +355,8 @@ export async function computePossibleRequests = (): Array<Request> => {
 // during static render
 export async function propsGetter(req: Request): Props {
     const { urlParams, header } = req
-    // We argue that checking authentication in "getServerSideProps" is an anti-pattern, 
-    // and since we also want to support static render, 
-    // security is checked and headers are set by an upfront server
-    if (header["X-PAID"] === true) {
-       const privateArticle = await fetchPrivateArticle(urlParams.id)
-       return { privateArticle }
-    } else {
-	    redirect("/subscribe")
-    }
+    const privateArticle = await fetchPrivateArticle(urlParams.id)
+    return { privateArticle }
 }
 // we rerun propsGetter every minute to get a fresh version of the article
 export const TTL_MS = 60000
@@ -372,6 +368,7 @@ Possible scenarios depending on the caching strategy:
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OT
-k0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTM3ODM0NjAwOSwxNjAyNzM5MzQ2LC0xMj
+YyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUw
+MTk4XX0=
 -->
