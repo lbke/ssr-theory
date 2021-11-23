@@ -1,5 +1,9 @@
 # Theoretical foundations for server-side rendering and static-rendering
 
+## Abstract
+
+This paper contributions are threefold. First, we propose formal definitions for 
+
 And why they are actually the same thing.
 
 ## Definitions
@@ -379,7 +383,7 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNj
-AyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUz
-NTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbMTk3NDkyNzM0NSwtNDUzNjA5Mzg3LC0xNT
+YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
+ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
