@@ -377,8 +377,9 @@ Possible scenarios depending on the caching strategy:
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
+- 11/2021
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMT
-I2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1
-MDE5OF19
+eyJoaXN0b3J5IjpbLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNj
+AyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUz
+NTMyLC0xNzg0MzUwMTk4XX0=
 -->
