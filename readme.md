@@ -178,7 +178,7 @@ Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req
 
 Congratulations, you can enjoy static rendering from an ensemblist point of view.
 
-### Implementation
+## Implementation
 
 Here are the typings and the final build-time rendering function:
 
@@ -398,8 +398,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtND
-UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
-NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
-hdfQ==
+eyJoaXN0b3J5IjpbMzI5NzczMDQ0LC0xNDU3ODYwMDQxLDEzMT
+YwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5
+MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC
+0xNzg0MzUwMTk4XX0=
 -->
