@@ -178,7 +178,7 @@ Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req
 
 Congratulations, you can enjoy static rendering from an ensemblist point of view.
 
-## A unified API for server-rendering
+## Implementation
 
 Here are the typings and the final build-time rendering function:
 
@@ -316,7 +316,7 @@ And also, that the possible values still evolves relatively slowly, otherwise us
 
 There is still a strong limitation: props are still entirely defined by the URL. You cannot process the request with a custom function in the current implementation.
 
-## A more generic server-rendering?
+## A unified API for server-rendering
 
 Based on this model, here is what could be a unified view of SSR and SSG, for a Next.js page:
 ```ts
@@ -398,8 +398,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMwMDY5NzEwLC0xNDU3ODYwMDQxLDEzMT
-YwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5
-MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC
-0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTg5ODgwOTEwNCwtMTQ1Nzg2MDA0MSwxMz
+E2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjcz
+OTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMi
+wtMTc4NDM1MDE5OF19
 -->
