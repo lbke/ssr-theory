@@ -11,7 +11,9 @@ From this study, we conclude that the division between static and request-time r
 ## Related work
 
 If you believe some work should appear in this section, please reach us out: contact@lbke.fr.
-Most definitions we
+We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis: namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through its Next.js framework (https://nextjs.org/).
+At the time of writing, Next.js pr
+
 
 
 ## Definitions
@@ -392,8 +394,8 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5MzA2MzI3OSwxMzE2MDk2MzIzLC00NT
-M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
-MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
-19
+eyJoaXN0b3J5IjpbLTEyMjkxMzA2NDcsMTMxNjA5NjMyMywtND
+UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
+NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
+hdfQ==
 -->
