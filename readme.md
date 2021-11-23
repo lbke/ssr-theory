@@ -396,10 +396,10 @@ This implementation is further described in this informal article: https://blog.
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
-- 11/2021 - Adding abstract
+- 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5ODgwOTEwNCwtMTQ1Nzg2MDA0MSwxMz
-E2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjcz
-OTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMi
-wtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTM1ODMzOTgzLC0xNDU3ODYwMDQxLDEzMT
+YwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5
+MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC
+0xNzg0MzUwMTk4XX0=
 -->
