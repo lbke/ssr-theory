@@ -1,4 +1,5 @@
 # Theoretical foundations for server-side rendering and static-rendering
+Eric Burel, LBKE, https://www.lbke.fr
 
 ## Abstract
 
@@ -397,8 +398,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUzNTA5MzkyLDEzMTYwOTYzMjMsLTQ1Mz
-YwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYy
-MzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX
-0=
+eyJoaXN0b3J5IjpbLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtND
+UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
+NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
+hdfQ==
 -->
