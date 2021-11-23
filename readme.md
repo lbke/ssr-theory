@@ -8,7 +8,6 @@ Then, we model server-side rendering as binding between two sets, the sets of al
 Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between.
 From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that static rendering in particular has been vastly underused until recently.
 
-
 ## Definitions
 
 ### Server rendering
@@ -386,8 +385,8 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwOTE3MzgzLDEzMTYwOTYzMjMsLTQ1Mz
-YwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYy
-MzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX
-0=
+eyJoaXN0b3J5IjpbMTYyNTc2ODI5NSwxMzE2MDk2MzIzLC00NT
+M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
+MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
+19
 -->
