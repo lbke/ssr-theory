@@ -3,7 +3,7 @@
 ## Abstract
 
 This paper contributions are threefold. 
-First, we propose formal definitions for the technical concepts behind the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exists in the industry, sometimes even contradictory.
+First, we propose formal definitions for the technical concepts behind the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and many are even contradictory. Beyond wording details and framework specifi, we strive to unify those concepts within a common framework
 Then, we model server-side rendering as binding between two sets, the sets of all possible requests, and the set of responses from the server. From there, we derive rules that define when build-time rendering is possible, and when it is not.
 Finally, 
 
@@ -386,7 +386,7 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MTg5NzYxMSwtNDUzNjA5Mzg3LC0xNT
+eyJoaXN0b3J5IjpbMTM5NTM0NzA1NCwtNDUzNjA5Mzg3LC0xNT
 YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
 ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
