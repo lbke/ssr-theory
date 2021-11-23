@@ -388,15 +388,17 @@ Possible scenarios depending on the caching strategy:
 
 ## Implementation
 
-No existing framework implements the API we propose. However, the introduction of a middleware system in Next.js, coupled with "Incremental Static Regeneration", let's us get as close as possible from 
+No existing framework implements the API we propose. However, the introduction of a middleware system in Next.js, coupled with "Incremental Static Regeneration", let's us get as close as possible from an optimal static rendering.
+We use a palliative approach based on route parameters to simulate the precomputation of a set of request. The parameter encodes other attributes such as headers, cookies.
+This implementation is further described in this informal article: https://blog.vulcanjs.org/render-anything-statically-with-next-js-and-the-megaparam-4039e66ffde
 
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDc0NTcwMTUsMTMxNjA5NjMyMywtND
-UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
-NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
-hdfQ==
+eyJoaXN0b3J5IjpbNzUzNTA5MzkyLDEzMTYwOTYzMjMsLTQ1Mz
+YwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYy
+MzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX
+0=
 -->
