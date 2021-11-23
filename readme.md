@@ -6,7 +6,7 @@ This paper contributions are threefold.
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within the common, broader understanding.
 Then, we model server-side rendering as binding between two sets, the sets of all possible requests, and the set of responses from the server. From there, we derive rules that define when build-time rendering is possible, and when it is not.
 Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between.
-We conclude that the division between static and request-time rendering is purely fictional, and t
+We conclude that the division between static and request-time rendering is purely fictional, and that static rendering in particular is still vastly underused.
 
 
 ## Definitions
@@ -386,7 +386,7 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1NDAzODMxNCwtNDUzNjA5Mzg3LC0xNT
+eyJoaXN0b3J5IjpbMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
 YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
 ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
