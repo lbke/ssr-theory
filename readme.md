@@ -385,15 +385,18 @@ Possible scenarios depending on the caching strategy:
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
-- 
+
+## Implementation
+
+No existing framework implements the API we propose. However, the introduction of a middleware system in Next.js, coupled with "Incremental Static Regeneration", let's us get as close as possible from 
 
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTQwNjIwNSwxMzE2MDk2MzIzLC00NT
-M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
-MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
-19
+eyJoaXN0b3J5IjpbLTExNDc0NTcwMTUsMTMxNjA5NjMyMywtND
+UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
+NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
+hdfQ==
 -->
