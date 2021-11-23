@@ -5,14 +5,14 @@
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within the common, broader understanding.
 Then, we model server-side rendering as binding between two sets, the sets of all possible requests, and the set of responses from the server. From there, we derive rules that define when build-time rendering is possible, and when it is not.
-Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between.
+Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between. We demonstrate a partial implementation of this API using Next.js 12.
 From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that static rendering in particular has been vastly underused until recently.
 
 ## Related work
 
 If you believe some work should appear in this section, please reach us out: contact@lbke.fr.
-We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis: namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through its Next.js framework (https://nextjs.org/).
-At the time of writing, Next.js pr
+We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis, namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through the Next.js framework (https://nextjs.org/).
+At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefor
 
 
 
@@ -394,8 +394,8 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjkxMzA2NDcsMTMxNjA5NjMyMywtND
-UzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIx
-NjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOT
-hdfQ==
+eyJoaXN0b3J5IjpbMTcxNTQ1Mjc2MCwxMzE2MDk2MzIzLC00NT
+M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
+MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
+19
 -->
