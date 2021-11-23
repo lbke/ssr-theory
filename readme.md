@@ -12,9 +12,7 @@ From this study, we conclude that the division between static and request-time r
 
 If you believe some work should appear in this section, please reach us out: contact@lbke.fr.
 We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis, namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through the Next.js framework (https://nextjs.org/).
-At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefor
-
-
+At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefore has been chosen as the basis of our implementation.
 
 ## Definitions
 
@@ -394,7 +392,7 @@ Possible scenarios depending on the caching strategy:
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNTQ1Mjc2MCwxMzE2MDk2MzIzLC00NT
+eyJoaXN0b3J5IjpbLTkzOTQwNjIwNSwxMzE2MDk2MzIzLC00NT
 M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
 MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
 19
