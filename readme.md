@@ -8,6 +8,12 @@ Then, we model server-side rendering as binding between two sets, the sets of al
 Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between.
 From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that static rendering in particular has been vastly underused until recently.
 
+## Related work
+
+If you believe some work should appear in this section, please reach us out: contact@lbke.fr.
+Most definitions we
+
+
 ## Definitions
 
 ### Server rendering
@@ -379,13 +385,14 @@ Possible scenarios depending on the caching strategy:
 - $TTL = X; 0 < X < \infty$ => this is incremental static regeneration. You may want to prerender some pages as well.
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
+- 
 
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
-- 11/2021
+- 11/2021 - Adding abstract
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyNTc2ODI5NSwxMzE2MDk2MzIzLC00NT
+eyJoaXN0b3J5IjpbMTI5MzA2MzI3OSwxMzE2MDk2MzIzLC00NT
 M2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2
 MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF
 19
