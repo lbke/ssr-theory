@@ -333,11 +333,11 @@ Note: experience Next.js users might argue that middlewares, introduced in Next 
 
 The main advantage of limiting static rendering to URLs is that it is easier to understand for Next.js end users and easier to manage at runtime. 
 The request processing is limited to a bare minimum, since you only need to look at the base path to find the template, and the route parameters to compute the props. 
-Extending the rendering to other request parameters also requires stronger request processing capabilities, even for static content.  "Edge" features introduced by both Vercel and Netlify hosts recently, in 2021, will alleviate this limitation in the future. 
-
 Intuitively, it's easy to precompute all the possible paths for an app. Even if the values are dynamic, you simply need a few requests, for instance to get the list of articles from your CRM.
 
-The limitation is however that in order to get different props, you need a different URL. So if you want to prerender a light and dark mode for the same route, you would need an ugly route parameter just for that. You cannot get different props based on a cookie or a query parameter. 
+The limitation of this URL-based approach is that in order to get different props for a template, so a new variation of a page, we need a different URL. So if we want to build-time render a light and dark mode for the same route, we would need a route parameter just for that. You cannot get different props based on a cookie or a query parameter. 
+Extending the rendering to other request parameters also requires stronger request processing capabilities, even for static content.  "Edge" features introduced by both Vercel and Netlify hosts recently, in 2021, will alleviate this limitation in the future. 
+
 
 Also, a lot of valid build-time attributes cannot be obtained just by looking at the URL. You would also need to process the request cookies for instance, to tell if the user is authenticated or not.
 
@@ -439,9 +439,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTg3NDc5MTMsLTE5NjE4MDQ3MSwtND
-AzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4
-MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLT
-E1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0
-ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTg1NDAyMDc1MywtMTk2MTgwNDcxLC00MD
+MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
+LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
+U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
+MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
