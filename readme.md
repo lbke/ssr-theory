@@ -374,9 +374,9 @@ type propsGetter = (req: Request)=> Promise<Props>
 type TTL : Number
 ```
 Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. 
-For instance, Next.js differentiation between `getServerSideProps` (SSR) and `getStaticProps` (SSG) is a relevant implementation choice, but a still an implementation choice. Other 
+For instance, Next.js differentiation between `getServerSideProps` (SSR) and `getStaticProps` (SSG) is a relevant implementation choice, but a still an implementation choice. It is possible to imagine other implementation of server-rendering that blurs the line between the different possible "render moments". 
 
-And an exemple implementation for paid pages on a blog:
+Exemple implementation for paid pages on a blog:
 ```ts
 export const BlogPage = (props: Props) => (
 <div>
@@ -427,10 +427,14 @@ Possible scenarios depending on the caching strategy:
 - If `propsGetter` always return a new value (say it includes current time for instance), TTL should be set at zero. Otherwise memory will explode because of useless caching.
 - You can always define `computePossibleRequests` to precompute some pages at build-time, for an hybridation between static render and server render (that's the point of ISR).
 
-## Implementation
+## Implementation in real-life framework
 
-No existing framework implements the API we propose. However, the introduction of a middleware system in Next.js, coupled with "Incremental Static Regeneration", let's us get as close as possible from an optimal static rendering.
-We use a palliative approach based on route parameters to simulate the precomputation of a set of request. The parameter encodes other attributes such as headers, cookies.
+As far as we can tell, no existing framework implements the API we propose out-of-the-box. 
+
+However, the introduction of a middleware system in Next.js, coupled with "Incremental Static Regeneration", let's us get as close as possible from an optimal static rendering with a minimal setup.
+
+We used a palliative approach based on route parameters to simulate the precomputation of a set of request. The parameter encodes other attributes such as headers, cookies.
+
 This implementation is further described in this informal article: https://blog.vulcanjs.org/render-anything-statically-with-next-js-and-the-megaparam-4039e66ffde
 
 ### Changelog
@@ -438,7 +442,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzcxNDYwNTg0LC0xOTYxODA0NzEsLTQwMz
+eyJoaXN0b3J5IjpbMzY2MTkwOTA3LC0xOTYxODA0NzEsLTQwMz
 A5ODI0NCw1NjQxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMs
 LTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
 YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
