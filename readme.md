@@ -6,12 +6,12 @@ Eric Burel, LBKE, https://www.lbke.fr
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
 Then, we model server-side rendering mathematically as a binding between two sets: the set of all possible requests, and the set of responses from the server. From this model, we derive rules that define for which requests pre-rendering is possible or not.
-Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between. We demonstrate a partial implementation of this API using Next.js 12.
-From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that static rendering in particular has been vastly underused until recently.
+Finally, we develop an API that should encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between. We demonstrate a partial implementation of this API using Next.js 12.
+From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that build-time rendering in particular has been vastly underused until recently.
 
 ## Related work
 
-If you believe some work should appear in this section, please reach us out: contact@lbke.fr.
+If you believe a paper, article or resource should appear in this section, please reach us out: contact@lbke.fr.
 We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis, namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through the Next.js framework (https://nextjs.org/).
 At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefore has been chosen as the basis of our implementation.
 
@@ -398,7 +398,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODgwMjQxMzAsLTM1ODMzOTgzLC0xND
+eyJoaXN0b3J5IjpbLTIwNTYyMTY1MTQsLTM1ODMzOTgzLC0xND
 U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
 NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
 wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
