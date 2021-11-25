@@ -353,7 +353,7 @@ Note: there is still a very minor hypothesis, that people don't spam your websit
 
 And also, that the possible values still evolves relatively slowly, otherwise user will still get stale data. If the cache time to live is too short, you end up with usual server-side rendering, which defeats the purpose of ISR.
 
-There is still a strong limitation: props are still entirely defined by the URL. You cannot process the request with a custom function in the current implementation.
+There is still a strong limitation: props are still entirely defined by the URL. It was not possible to process the request with a custom function in the current implementation, until Next.js introduced middlewares.
 
 ## A unified API for server-rendering
 
@@ -437,9 +437,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODE0MTI4MTAsLTE5NjE4MDQ3MSwtND
-AzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4
-MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLT
-E1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0
-ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTMzNjU5ODA0NywtMTk2MTgwNDcxLC00MD
+MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
+LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
+U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
+MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
