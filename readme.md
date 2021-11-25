@@ -82,7 +82,7 @@ Therefore, build-time rendering can be redefined as a server-side pre-computatio
 
 #### Steps of server-side rendering
 
-Server-side rendering can be split in following steps:
+Per-request server-side rendering can be split in following steps:
 
 1. For a given request, select the right template. Most often based on the URL, but it could be based on other request attributes such as cookies, request headers, etc.
 2. Compute the props of the template based on user's request. This step simply translates the HTTP request into a set of attributes that makes more sense in the business domain. Technically, this is not strictly needed for server-side rendering, the request could be directly passed to the render function.
@@ -90,10 +90,12 @@ Server-side rendering can be split in following steps:
 
 Request-time rendering does this for every HTTP request.
 
-Build-time rendering does this in advance, at build-time, for a handful of precomputed HTTP requests. Then, when an HTTP request is received, the server will simply return the right rendered page:
+Build-time rendering does this in advance, at build-time, for a handful of precomputed HTTP requests. Then, when an HTTP request is received, the server will simply return the right rendered page. Build-time rendering is simply the introduction of a preliminary, optional step:
 
-0. Precompute the pages for various requests (see steps above)
-2. For a given request, pick the right page
+0. Prerender the pages for various requests (see steps above)
+1. Same as above (select the right template)
+2.  Return the pre-rendered content (no need for an additional computation)
+3. Render the page, by feeding the page template with the right props.
 
 #### Formally
 
@@ -425,7 +427,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTczMjAyNzg5LC0yODQ1MzkxNDgsLTM1OD
+eyJoaXN0b3J5IjpbOTY2NjkwMjMzLC0yODQ1MzkxNDgsLTM1OD
 MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
 NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
 k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
