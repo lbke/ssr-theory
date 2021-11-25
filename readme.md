@@ -117,7 +117,7 @@ $$
 
 Request-time rendering does this for every request. Build-time rendering caches the page once for all during the build.
 
-If we go step by step, we can also define the following intermediate function:
+If we go step by step, and include the concept of "props" as input of the template (instead of the raw HTTP request), we can also define the following intermediate functions:
 $$
 templateGetter(req) \mapsto template\\
 propsGetter(req)\mapsto props\\
@@ -431,9 +431,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMzA5ODI0NCw1NjQxMTg5MzcsLTI4ND
-UzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMy
-MywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLT
-EyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQz
-NTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTc1NzcyNDc5MCwtNDAzMDk4MjQ0LDU2ND
+ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
+MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
+YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
+MzUzMiwtMTc4NDM1MDE5OF19
 -->
