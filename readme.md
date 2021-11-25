@@ -5,7 +5,7 @@ Eric Burel, LBKE, https://www.lbke.fr
 
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
-Then, we model server-side rendering mathematically as a binding between two sets: the set of all possible requests, and the set of responses from the server. From this model, we derive rules that define for which requests pre-rendering is possible, and when it is not.
+Then, we model server-side rendering mathematically as a binding between two sets: the set of all possible requests, and the set of responses from the server. From this model, we derive rules that define for which requests pre-rendering is possible or not.
 Finally, we develop an API that encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between. We demonstrate a partial implementation of this API using Next.js 12.
 From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that static rendering in particular has been vastly underused until recently.
 
@@ -398,8 +398,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNjA2MDQ5MSwtMzU4MzM5ODMsLTE0NT
-c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
-NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
-E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTE3ODgwMjQxMzAsLTM1ODMzOTgzLC0xND
+U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
+NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
+wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
