@@ -4,10 +4,11 @@ Draft paper
 
 ## Abstract
 
-We consider any reduction of the volume of computation needed to operate a website or web application an obligation to achieve a fast, feature-rich and energy-efficient Internet. In this regard, the "Jamstack" philosophy
+We consider any reduction of the volume of computation needed to operate a website or web application an obligation to achieve a fast, feature-rich and energy-efficient Internet.
+Pre-rendering content server-side is one possible approach to achieve those contradictory goals. Yet, the very conc
 
 This paper contributions are threefold. 
-First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
+First, we propose formal definitions for various web content rendering approaches that powers the "Jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
 Then, we model server-side rendering mathematically as a binding between two sets: the set of all possible requests, and the set of responses from the server. From this model, we derive rules that define for which requests pre-rendering is possible or not.
 Finally, we develop an API that should encompasses all possible server-rendering approaches, should they happen at build-time, request-time, or somewhere in-between. We demonstrate a partial implementation of this API using Next.js 12.
 From this study, we conclude that the division between static and request-time rendering is mostly fictional and sums up to a problem of cache configuration, and that build-time rendering in particular has been vastly underused until recently.
@@ -430,9 +431,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5Mzc2MjU3LDU2NDExODkzNywtMjg0NT
-M5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIz
-LC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMT
-I2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1
-MDE5OF19
+eyJoaXN0b3J5IjpbLTY4MDcwOTc3MCw1NjQxMTg5MzcsLTI4ND
+UzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMy
+MywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLT
+EyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQz
+NTAxOThdfQ==
 -->
