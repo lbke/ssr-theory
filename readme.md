@@ -17,9 +17,9 @@ At the time of writing, Next.js proposes the most complete set of features for s
 
 ## Definitions
 
-### Server rendering
+### Server-side rendering
 
-There are a lot of definitions in the wild. Let's stick to the most basic one : server rendering is rendering a web page, on the server, as opposed to rendering in the client browser.
+There are many definitions of "server-side rendering" (SSR) in the wild. Let's stick to the most basic one : server rendering is rendering a web page, on the server, as opposed to rendering in the client browser.
 
 This includes:
 
@@ -398,7 +398,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTYyMTY1MTQsLTM1ODMzOTgzLC0xND
+eyJoaXN0b3J5IjpbLTE2MjY0NDA2ODUsLTM1ODMzOTgzLC0xND
 U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
 NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
 wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
