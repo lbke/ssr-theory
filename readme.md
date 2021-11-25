@@ -62,7 +62,7 @@ The template could be typically a React component, or a template written in more
 
 So, a page is a rendered template. Like a text with blanks, whose blanks have been filled.
 
-#### Request = input of a server-render
+#### Request as input of a server-render, be it build-time or request-time
 
 A request is the basic input of request-time server-rendering. It's more precisely an HTTP request, most of the time triggered by a human user through a web browser. 
 
@@ -78,11 +78,11 @@ The main difference with traditional per-request server-side rendering, is that 
 
 We should keep in mind that there is no such thing as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always servers and HTTP requests around the corner.
 
-Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or maytmake when the site is live.
+Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or may not make against the server. The initial input is still an HTTP request, only the render moment differs with per-reque
 
 #### Steps of server rendering
 
-Server rendering can be split in following steps:
+Server-side rendering can be split in following steps:
 
 1. For a given request, select the right template (usually based on the URL)
 2. Compute the props based on user's request
@@ -425,8 +425,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE2NjI1NjEwLC0yODQ1MzkxNDgsLTM1OD
-MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
-NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
-k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbMTMwMDQ2MTE3MiwtMjg0NTM5MTQ4LC0zNT
+gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
+ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
+w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
