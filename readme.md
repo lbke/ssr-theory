@@ -57,16 +57,14 @@ In this section, we'll dive into the deeper technical details of server-side ren
 
 Let's call the result of render is a page. When the render happens server-side, the page is a combination of HTML, JavaScript and CSS code.
 
-A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props". 
+A template is a generic web page, that expects some values to generate actual HTML and styles. Those values can be called "props". 
 The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
 
 So, a page is a rendered template. Like a text with blanks, whose blanks have been filled.
 
-
 #### Request = input of a server-render
 
 A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
-
 
 However, there's a fact often overlooked in the Jamstack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
@@ -78,7 +76,7 @@ Keep in mind that there is no such thing as a "serverless" website. Static websi
 
 So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.
 
-### Steps of server rendering
+#### Steps of server rendering
 
 Server rendering can be split in following steps:
 
@@ -93,7 +91,7 @@ Build-time rendering does this in advance. Then, when an HTTP request is receive
 1. Precompute the pages for various requests (see steps above)
 2. For a given request, pick the right page
 
-### Formally
+#### Formally
 
 A $renderer$ function takes requests as input and returns pages.
 
@@ -133,14 +131,14 @@ Attributes of a request may be of different nature. We can represent them as a f
 
 So, there is an infinite number of requests if you consider all parameters, but you can build finite subsets if you consider only certain attributes of the request.
 
-### Takeaways
+#### Takeaways
 
 - server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and outputs some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
 - what matters are the value you will use to fill the blanks your template: the props.
 - build-time rendering, or "static" rendering, is just precomputed server-side rendering
 - the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the nature of the request attributes you'll want to consider to compute the result.
 
-## Build-time rendering aka static rendering
+## When build-time rendering is possible
 
 ### Build-time rendering is precomputed request-time rendering
 
@@ -423,8 +421,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzUxNTk4NDIsLTM1ODMzOTgzLC0xND
-U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
-NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
-wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
