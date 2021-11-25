@@ -155,13 +155,13 @@ In current implementations, the difference also lies in the nature of the reques
 
 At build time, there is no HTTP request happening. Yet, build-time rendering is still heavily based on the concept of request, as explained before: it's just server-side precomputation of a bunch of requests.
 
-If you build 10 pages for 10 articles, you are precomputing 10 requests, one for each URL. Existing frameworks are often adopting this "URL" vision of build-time rendering. 
+If a blog application builds 10 pages for 10 articles, it is actually precomputing 10 possible requests, one for each URL. Existing frameworks are often adopting this "URL" vision of build-time rendering. 
 
-Yet, they could also consider other request attributes such as cookies, that would work exactly the same. For instance, you could prerender a dark mode and light mode version of your interface, based on a cookie.
+Yet, they could also consider other request attributes such as cookies. For instance, you could prerender a dark mode and light mode version of your interface, based on a cookie.
 
 Therefore, to keep our definition consistent, we can suppose that the render function is still using a request as input, except that it is limited to parameters you can know at build-time.
 
-### What can be built: the 3 rules of build-eligibility
+### What can be built: the 3 static rules of build-eligibility
 
 Intuitively, build-eligibility depends a lot on the attributes you consider in the request. 
 If you have 2 modes, light and dark, that works. 10 articles on your blog, that works. 
@@ -432,9 +432,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjk1MDA4NDIsLTQwMzA5ODI0NCw1Nj
-QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
-NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
-E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
-NTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTY4Njg4ODk3MSwtNDAzMDk4MjQ0LDU2ND
+ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
+MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
+YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
+MzUzMiwtMTc4NDM1MDE5OF19
 -->
