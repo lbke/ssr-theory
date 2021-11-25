@@ -53,7 +53,7 @@ In this section, we'll dive into the deeper technical details of rendering.
 
 ### Page, template and props
 
-Let's call the result of render is a page. When the render happens server-side, the page is a combination of HTML, JavaScript and CSS code. When the render happens client-side, the page is the final state of the Document Object Model (DOM). As a matter of simplification, we can consider that in both case, what 
+Let's call the result of render is a page. When the render happens server-side, the page is a combination of HTML, JavaScript and CSS code. When the render happens client-side, the page is the final state of the Document Object Model (DOM). As a matter of simplification, we can safely consider that a render returns HTML and CSS during our reasoning.
 
 A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props". 
 The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
@@ -66,7 +66,7 @@ So, a page is a rendered template. Like a text with blanks, whose blanks have be
 A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
 
 
-However, there's a fact often overlooked in the JAMStack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
+However, there's a fact often overlooked in the Jamstack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
 For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.whatever/article-1" they get article 1? Right?
 
@@ -421,8 +421,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzI2NDQwNjIsLTM1ODMzOTgzLC0xND
-U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
-NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
-wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTU2OTcwNzUxMCwtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
