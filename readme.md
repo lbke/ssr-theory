@@ -17,9 +17,12 @@ At the time of writing, Next.js proposes the most complete set of features for s
 
 ## Definitions
 
+### Rendering
+Rendering is the act of transforming a piece of content into either HTML or a DOM representation that can be displayed by a web browser, client-side.
+
 ### Server-side rendering
 
-There are many definitions of "server-side rendering" (SSR) in the wild. Let's stick to the most basic one : server-side rendering is rendering a web page, on a server, as opposed to rendering in the client browser.
+There are many definitions of "server-side rendering" (SSR) or in the wild. Let's stick to the most basic one : server-side rendering is rendering a web page, on a server, as opposed to rendering in the client browser.
 Server-side rendering is as ancient as the web itself, and was almost the only way of rendering HTML content programmatically until client-side JavaScript got serious with the introduction of Chrome V8 engine in 2008.
 
 This includes:
@@ -399,8 +402,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU2NDU5NDM4LC0zNTgzMzk4MywtMTQ1Nz
-g2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2
-NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMT
-kzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbMjEzMzM1MjI1NiwtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
