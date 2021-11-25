@@ -232,7 +232,7 @@ type PropsGetter = (req: Req) => Props
 type Renderer = (req: Req) => Page // = TemplateGetter(Req)(PropsGetter(Req))
 ```
 
-Example:
+Example for a blog:
 ```ts
 function rBuildComputer () { return [{url: "article/1"}, { url: "article/2"}] }
 
@@ -253,7 +253,7 @@ The `rBuildComputer` function doesn't feel very natural. That's because requests
 
 Also, when actually serving the pages, this means you still need some request processing logic. The final HTML/CSS/JS result may be cached, the result of the `renderer` function, but you still need to check the request URL everytime to get the right page in this example. 
 
-We'll describe how Next.js solves a simplified version of this problem later-on.
+We'll describe how Next.js can solves a simplified version of this problem later-on.
 
 ### Takeaways
 
@@ -435,7 +435,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMzk5MTcxMywtNDAzMDk4MjQ0LDU2ND
+eyJoaXN0b3J5IjpbLTI4MjE4MjI1MSwtNDAzMDk4MjQ0LDU2ND
 ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
 MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
 YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
