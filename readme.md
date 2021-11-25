@@ -146,13 +146,14 @@ So, there is an infinite number of requests if you consider all parameters, but 
 - server-side rendering is just normal request processing. We don't really care about the technology, any app with server-rendering is just a function that processes requests and outputs some results. If the result happens to be some HTML, CSS and JS, we call that rendering, but there is no strong difference with any other kind of API. 
 - what matters are the value you will use to fill the blanks your template: the props.
 - build-time rendering, or "static" rendering, is just precomputed server-side rendering
-- the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the render moment. In current implementations, the difference also lies in the nature of the request attributes you'll want to consider to compute the result, although we consider this distinction mostly fictional.
+- the difference between build-time rendering ("static") and request-time rendering ("ssr") is mostly based on the render moment. 
+In current implementations, the difference also lies in the nature of the request attributes you'll want to consider to compute the result, although we consider this distinction mostly fictional.
 
 ## When build-time rendering is possible
 
 ### Build-time rendering is precomputed request-time rendering
 
-At build time, there is no HTTP request happening. Yet, build-time rendering is still heavily based on the concept of request, as explained before: it's just precomputation of a bunch of requests.
+At build time, there is no HTTP request happening. Yet, build-time rendering is still heavily based on the concept of request, as explained before: it's just server-side precomputation of a bunch of requests.
 
 If you build 10 pages for 10 articles, you are precomputing 10 requests, one for each URL. Existing frameworks are often adopting this "URL" vision of build-time rendering. 
 
@@ -431,9 +432,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMDM2MjQ0MSwtNDAzMDk4MjQ0LDU2ND
-ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
-MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
-YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
-MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTEzMjk1MDA4NDIsLTQwMzA5ODI0NCw1Nj
+QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
+NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
+E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
+NTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
