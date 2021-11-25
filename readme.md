@@ -172,9 +172,9 @@ Let's try to figure when build-time rendering is possible for a set of requests 
 
 To be eligible for build-time rendering, our set of requests must have following properties:
 
-- It's a subset of the set of all possible requests (the requests are valids and make sense, like URL are correct URLs etc.)
-- It must be a finite set, otherwise build time would be infinite
-- Values should be known at build time and stay constant afterward
+1) It's a subset of the set of all possible requests (the requests are valids and make sense, like URL are correct URLs etc.)
+2) It must be a finite set, otherwise build time would be infinite
+3) Values should be known at build time and stay constant afterward
 
 ### Formally
 
@@ -184,12 +184,13 @@ Let's note $R_{getter}$ the set of all requests that a $propsGetter$ takes as in
 
 For instance, if we only use attribute 1 (say, the URL), and attribute 4 (say, the cookie that sets light or dark mode):
 $$
-R_{getter} = R_{\{attr_1, attr_4\}} 
-\iff
+R_{getter} = R_{\{attr_1, attr_4\}} \\
+\iff \\
 \forall req \in R_{getter}; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
 $$
 
 Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
+
 Picture it as any valid combination of attributes that can be used to compute the props, and still respect the 3 rules of build-eligibility. This is not useful to our reasonning but facilitates notation a lot, build-eligiblity can be written like this: $R_{getter} \subset RB$.
 
 So, a valid build-time request is any set of attributes that belongs to any valid $R_{build}$ ensemble included in $RB$. 
@@ -434,7 +435,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMDE3ODIxMCwtNDAzMDk4MjQ0LDU2ND
+eyJoaXN0b3J5IjpbMTQ4NDcyNTY1OCwtNDAzMDk4MjQ0LDU2ND
 ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
 MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
 YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
