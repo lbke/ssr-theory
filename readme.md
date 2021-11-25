@@ -4,6 +4,8 @@ Draft paper
 
 ## Abstract
 
+We consider the reduction of the volume of computation needed to operate a website or web application a positive outcome/
+
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
 Then, we model server-side rendering mathematically as a binding between two sets: the set of all possible requests, and the set of responses from the server. From this model, we derive rules that define for which requests pre-rendering is possible or not.
@@ -428,8 +430,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1OD
-MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
-NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
-k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTQ1MzIyNDE0Niw1NjQxMTg5MzcsLTI4ND
+UzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMy
+MywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLT
+EyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQz
+NTAxOThdfQ==
 -->
