@@ -253,7 +253,7 @@ The `rBuildComputer` function doesn't feel very natural. That's because requests
 
 Also, when actually serving the pages, this means you still need some request processing logic. The final HTML/CSS/JS result may be cached, the result of the `renderer` function, but you still need to check the request URL everytime to get the right page in this example. 
 
-We'll describe how Next.js can solves a simplified version of this problem later-on.
+We'll describe how Next.js can solve a simplified version of this problem later-on.
 
 ### Takeaways
 
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4MjE4MjI1MSwtNDAzMDk4MjQ0LDU2ND
-ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
-MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
-YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
-MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTExMTY1MjcxNjIsLTQwMzA5ODI0NCw1Nj
+QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
+NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
+E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
+NTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
