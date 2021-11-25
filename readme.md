@@ -26,9 +26,9 @@ There are many definitions of "server-side rendering" (SSR) or in the wild. Let'
 Server-side rendering is as ancient as the web itself, and was almost the only way of rendering HTML content programmatically until client-side JavaScript got serious with the introduction of Chrome V8 engine in 2008.
 
 This includes:
-- no-rendering at all: the edge-case where you write your content directly as HTML or text.
 - build-time server rendering, also known as static rendering, or static site generation (SSG). This is when you render the pages of your website when you publish it, once for all.
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
+- no-rendering at all, when you write your content directly as HTML or text falls. It's an edge case yet falls into the se
 
 The common point is that both renders on the server instead of the user's computer. The difference relies on when the render happens.
 
@@ -402,7 +402,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzMzM1MjI1NiwtMzU4MzM5ODMsLTE0NT
+eyJoaXN0b3J5IjpbMTY5MzcwMTc4NiwtMzU4MzM5ODMsLTE0NT
 c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
 NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
 E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
