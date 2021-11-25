@@ -436,15 +436,25 @@ However, the introduction of a middleware system in Next.js, coupled with "Incre
 We used a palliative approach based on route parameters to simulate the precomputation of a set of request. The parameter encodes other attributes such as headers, cookies.
 
 This implementation is further described in this informal article: https://blog.vulcanjs.org/render-anything-statically-with-next-js-and-the-megaparam-4039e66ffde
+Code: https://github.com/VulcanJS/vulcan-next/blob/devel/src/pages/vn/examples/%5BM%5D/megaparam-demo.tsx
+Implementation:
+
+https://github.com/VulcanJS/vulcan-next/blob/devel/src/pages/vn/examples/%5BM%5D/megaparam-demo.tsx
+
+## Conclusion
+
+We hope this paper could form the basis of a unified vision of server-side rendering, that is implementation independant
+
+
 
 ### Changelog
 - 07/2021 - first draft
 - 09/2021 - better example for the generic SSR API
-- 11/2021 - Adding abstract, started to add related work, linking a working implementation
+- 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY2MTkwOTA3LC0xOTYxODA0NzEsLTQwMz
-A5ODI0NCw1NjQxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMs
-LTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
-YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
-ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTk2MjcyOTQ3NSwtMTk2MTgwNDcxLC00MD
+MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
+LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
+U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
+MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
