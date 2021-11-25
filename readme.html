@@ -58,7 +58,7 @@ Server-side rendering is as ancient as the web itself, and was almost the only w
 <li>request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.</li>
 <li>no rendering at all, when content is stored directly as HTML or text. It’s an edge case yet falls into the server-side rendering category, as it doesn’t involve any kind of client-side rendering.</li>
 </ul>
-<h3 id="the-not-so-special-case-of-static-rendering">The not-so-special case of static rendering</h3>
+<h3 id="render-moment-and-the-not-so-special-case-of-static-rendering">Render moment and the not-so-special case of static rendering</h3>
 <p>Rendering the content at build-time, or not rendering it at all, is considered as a special case. Therefore, in the industry, SSR is often synonymous to request-time server-rendering, while the terme “static” is preferred for build-time rendering or no rendering at all.</p>
 <p>From the server owner perspective, this distinction makes sense: the cost structure of per-request rendering and build-time rendering are very different. Per-request has no upfront cost, but a needs a render for each new request ; build-time has an upfront cost, but do not need additional computation afterward.</p>
 <p>However, from the web developer perspective, this distinction doesn’t really stand. The only difference is when the render happens. But in both scenarios, this render happens server-side.</p>
@@ -68,31 +68,35 @@ Server-side rendering is as ancient as the web itself, and was almost the only w
 The “render moment” should be treated as a matter of configuration, and not as the fundamental cornerstone of the “Jamstack” philosophy.</p>
 <p>The remainder of this paper is focused on server-side rendering only.</p>
 <h3 id="technical-definitions">Technical definitions</h3>
-<p>In this section, we’ll dive into the deeper technical details of server-side rendering.</p>
+<p>In this section, we’ll dive into the deeper technical details of server-side rendering needed for implementation.</p>
 <h4 id="page-template-and-props">Page, template and props</h4>
 <p>Let’s call the result of render is a page. When the render happens server-side, the page is a combination of HTML, JavaScript and CSS code.</p>
 <p>A template is a generic web page, that expects some values to generate actual HTML and styles. Those values can be called “props”.<br>
 The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP…</p>
 <p>So, a page is a rendered template. Like a text with blanks, whose blanks have been filled.</p>
-<h4 id="request--input-of-a-server-render">Request = input of a server-render</h4>
-<p>A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes.</p>
-<p>However, there’s a fact often overlooked in the Jamstack world: build-time server rendering <em>also</em> expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.</p>
-<p>For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types “your-super-blog.whatever/article-1” they get article 1? Right?</p>
-<p>The URL is one of the attribute of the user request, and this attributes helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.</p>
-<p>Keep in mind that there is no such thing as a “serverless” website. Static websites are relying on very simple servers, that just do some redirections, but there are always some servers and HTTP requests around.</p>
-<p>So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.</p>
-<h4 id="steps-of-server-rendering">Steps of server rendering</h4>
-<p>Server rendering can be split in following steps:</p>
+<h4 id="request-as-input-of-a-server-render-be-it-build-time-or-request-time">Request as input of a server-render, be it build-time or request-time</h4>
+<p>A request is the basic input of request-time server-rendering. It’s more precisely an HTTP request, most of the time triggered by a human user through a web browser.</p>
+<p>A request can be seen as a set of various attributes.</p>
+<p>However, there’s a fact often overlooked in the Jamstack ecosystem: in accordance to our definition of server-side rendering, build-time server rendering <em>also</em> expects a request as its input. Not only because the user has to initially query a server, via an URL, to get some content, but also because this URL is actually used by the server to retrieve the right piece of content.</p>
+<p>For instance, imagine a blog with 10 articles, that is statically built using a React framework such as Gatsby or Next.js Each article has its own URL. So when the user types “your-super-blog.whatever/article-1” they get article 1.<br>
+The URL is one of the attribute of the user request, and this attribute helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.</p>
+<p>The main difference with traditional per-request server-side rendering, is that the build-time rendering approach usually only uses the URL, and ignore the rest of the HTTP request. We argue that even though existing frameworks systematically waste the remainder of the HTTP request, this is not a fatality. Cookies, headers and other request attributes could also be used to select the right piece of content.</p>
+<p>We should keep in mind that there is no such thing as a “serverless” website. Static websites are relying on very simple servers, that just do some redirections, but there are always servers and HTTP requests around the corner.</p>
+<p>Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or may not make against the server. The initial input is still an HTTP request, only the render moment differs with per-request SSR.</p>
+<h4 id="steps-of-server-side-rendering-at-runtime">Steps of server-side rendering at runtime</h4>
+<p>When a user access a web page, per-request server-side rendering can be split in following steps:</p>
 <ol>
-<li>For a given request, select the right template (usually based on the URL)</li>
-<li>Compute the props based on user’s request</li>
-<li>Render the page = the templates filled with the props</li>
+<li>For a given request, select the right template depending on the HTTP request attributes.</li>
+<li>Compute the props of the template based on user’s request. This step simply translates the HTTP request into a set of attributes that makes more sense in the business domain. Technically, this is not strictly needed for server-side rendering, the request could be directly passed to the render function.</li>
+<li>Render the page, by feeding the page template with the right props.</li>
 </ol>
 <p>Request-time rendering does this for every HTTP request.</p>
-<p>Build-time rendering does this in advance. Then, when an HTTP request is received, the server will simply return the right rendered page:</p>
-<ol>
-<li>Precompute the pages for various requests (see steps above)</li>
-<li>For a given request, pick the right page</li>
+<p>Build-time rendering does mainly the same thing, but in advance, at build-time, for a handful of precomputed HTTP requests. Then, when an HTTP request is received, the server will simply return the right rendered page.</p>
+<p>Build-time rendering behaves as follow:</p>
+<ol start="0">
+<li>Prerender the pages for various requests (see steps above)</li>
+<li>Same as for per-request SSR: select the right template based on the request. Most often based on the URL, but it could be based on other request attributes such as cookies, request headers, etc.</li>
+<li>Return the pre-rendered content (no need for an additional computation)</li>
 </ol>
 <h4 id="formally">Formally</h4>
 <p>A <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>n</mi><mi>d</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">renderer</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">re</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right: 0.02778em;">erer</span></span></span></span></span> function takes requests as input and returns pages.</p>
