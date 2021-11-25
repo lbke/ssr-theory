@@ -264,7 +264,7 @@ We'll describe how Next.js can solve a simplified version of this problem later-
 
 ## Rendering at request time
 
-As soon as the request attributes you use to compute violates one of the 3 conditions to be a build-eligible set... you cannot build-time render anymore :( You are good to do some request-time server-side rendering, meaning you'll need to compute the render function for each incoming request.
+As soon as the request attributes used to render a page violate one of the 3 conditions to be a build-eligible set, this page cannot be build-time rendered anymore. This means the page should instead be rendered on-demand.
 
 Examples :
 
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTY1MjcxNjIsLTQwMzA5ODI0NCw1Nj
-QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
-NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
-E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
-NTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMjA1ODU4MjI1NCwtNDAzMDk4MjQ0LDU2ND
+ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
+MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
+YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
+MzUzMiwtMTc4NDM1MDE5OF19
 -->
