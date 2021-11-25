@@ -284,7 +284,7 @@ That rendering time must be smaller than the time between 2 changes of the list 
 Examples:
 
 - the list of articles on a personal blog only evolves daily/weekly. A rebuild takes a few minutes: articles are eligible for build-time rendering
-- the list of users on a SaaS product evolves a lot, you can get 10 new users a day (or more, who knows): private pages are not eligibilyou are not eligible
+- the list of users on a SaaS product evolves a lot, you can get 10 new users a day (or more, who knows): private pages are not eligible for build-time rendering
 
 ### Formally
 
@@ -435,7 +435,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0MzEzNjk5OCwtNDAzMDk4MjQ0LDU2ND
+eyJoaXN0b3J5IjpbLTE0ODYyMjc0OCwtNDAzMDk4MjQ0LDU2ND
 ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
 MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
 YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
