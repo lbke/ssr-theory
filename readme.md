@@ -30,13 +30,14 @@ This includes:
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
 - no rendering at all, when content is stored directly as HTML or text. It's an edge case yet falls into the server-side rendering category, as it doesn't involve any kind of client-side rendering.
 
-#### The special case of static rendering
+### The special case of static rendering
 
 Rendering the content at build-time, or not rendering it at all, is considered as a special case. Therefore, in the industry, SSR is often synonymous to request-time server-rendering, while the terme "static" is preferred for build-time rendering or no rendering at all.
 
 From the server owner perspective, this distinction makes sense: the cost structure of per-request rendering and build-time rendering are very different. Per-request has no upfront cost, but a needs a render for each new request ; build-time has an upfront cost, but do not need additional computation afterward.
+However, from the web developer perspective, this distinction doesn't really stand. The only difference is when the render happens. But in both scenarios, this render happens server-side.
 
-However, from the web developer perspective, this distinction doesn't really stand. The only difference is when the render happens. But in both scenarios, this render happens server-side. The same p
+In this paper, we advocate for a lighter distinction between those patterns. The "render moment", when the re should be treated as a parameter, and not as the fundamental distinction between.
 
 The common factor between what we call is that both renders on the server instead of the user's computer. The difference relies on when the render happens.
 
@@ -410,8 +411,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzODQ0MzM5LC0zNTgzMzk4MywtMTQ1Nz
-g2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2
-NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMT
-kzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTYwMzEwODgxNCwtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
