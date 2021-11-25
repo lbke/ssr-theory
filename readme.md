@@ -5,7 +5,7 @@ Draft paper
 ## Abstract
 
 We consider any reduction of the volume of computation needed to operate a website or web application an obligation to achieve a fast, feature-rich and energy-efficient Internet.
-Pre-rendering content server-side is one possible approach to achieve those contradictory goals. Yet, the very conc
+Pre-rendering content server-side is one possible approach to achieve those contradictory goals. Yet, the very concept of "prerendering" is still vague, and not seldom studied in the academic literature, leading to suboptimal implementations in existing frameworks.
 
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "Jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
@@ -431,7 +431,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MDcwOTc3MCw1NjQxMTg5MzcsLTI4ND
+eyJoaXN0b3J5IjpbLTQwMzA5ODI0NCw1NjQxMTg5MzcsLTI4ND
 UzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMy
 MywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLT
 EyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQz
