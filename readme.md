@@ -80,12 +80,12 @@ We should keep in mind that there is no such thing as a "serverless" website. St
 
 Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or may not make against the server. The initial input is still an HTTP request, only the render moment differs with per-request SSR.
 
-#### Steps of server rendering
+#### Steps of server-side rendering
 
 Server-side rendering can be split in following steps:
 
-1. For a given request, select the right template (usually based on the URL)
-2. Compute the props based on user's request
+1. For a given request, select the right template (most often based on the URL, but it could be based on other request attributes such as cookies, request headers, etc.)
+2. Compute the props of the template based on user's request. This step not only translate the full HTTP request into 
 3. Render the page = the templates filled with the props
 
 Request-time rendering does this for every HTTP request.
@@ -425,9 +425,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTE2MDY3NTEsLTI4NDUzOTE0OCwtMz
-U4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5
-Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMz
-ksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
-
+eyJoaXN0b3J5IjpbMTkyMzExOTQ2NiwtMjg0NTM5MTQ4LC0zNT
+gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
+ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
+w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
