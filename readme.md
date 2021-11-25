@@ -339,10 +339,9 @@ The limitation of this URL-based approach is that in order to get different prop
 
 Extending the rendering to other request parameters also requires stronger request processing capabilities, even for static content.  "Edge" features introduced by both Vercel and Netlify hosts recently, in 2021, will alleviate this limitation in the future. 
 
-### Server-side rendering
+### "Server-Side Rendering"
 
-Nothing fancy here, it's just classical SSR. Take a deep breath, the last part is the interesting one.
-
+Next.js vision of request-time rendering is representative of what can be found in the industry. Note that for Next.js, SSR means per-re
 ### Incremental Static Regeneration
 
 Formally, Incremental Static Rendering alleviates both the rule of finiteness and the rule of staticness for build-eligibility. Instead of rendering all the pages at build-time, you render them only on-demand. You can also rerender the pages more frequently, without rebuilding everything.
@@ -437,9 +436,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk1MTE5NjUxLC0xOTYxODA0NzEsLTQwMz
-A5ODI0NCw1NjQxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMs
-LTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
-YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
-ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTI0MzcyODU5NiwtMTk2MTgwNDcxLC00MD
+MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
+LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
+U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
+MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
