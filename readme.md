@@ -68,7 +68,8 @@ A request is the basic input of request-time server-rendering. It's more precise
 
 A request can be seen as a set of various attributes. 
 
-However, there's a fact often overlooked in the Jamstack ecosystem: in accordance to our definition of server-side rendering, build-time server rendering *also* expects a request as its input. Not only because the user has to initially query a server, via an URL, to get some content, but also because this URL is actually used by the server to retrieve the right piece ofcontent.
+However, there's a fact often overlooked in the Jamstack ecosystem: in accordance to our definition of server-side rendering, build-time server rendering *also* expects a request as its input. Not only because the user has to initially query a server, via an URL, to get some content, but also because this URL is actually used by the server to retrieve the right piece of content.
+The main difference with traditional per-request server-side rendering, is that the build-time rendering approach usually only uses the URL, and ignore the rest of the HTTP request. Again, we argue that even though existing frameworks have this approach, this
 
 Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
@@ -425,9 +426,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTkwNDQxMDEsLTI4NDUzOTE0OCwtMz
-U4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5
-Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMz
-ksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
-
+eyJoaXN0b3J5IjpbNjU4OTg1NzUzLC0yODQ1MzkxNDgsLTM1OD
+MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
+NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
+k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
