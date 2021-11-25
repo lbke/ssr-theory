@@ -269,9 +269,9 @@ As soon as the request attributes used to render a page violate one of the 3 con
 Examples :
 
 - One attribute is infinite. Say, the page is displaying the current date. You cannot prebuild for all dates.
-- One attribute is time-dependent. Request time is the obvious example here, but it also violates the finiteness property so it's not that interesting. A better example would be any kind of dynamic attribute. For example, the user id. The list of users evolves each time someone sign up on your website, so you cannot rebuild every time someone signs up.
+- One attribute is time-dependent. Request timestamp is an obvious example here, but it also violates the finiteness property so it's not that interesting. A better example would be any kind of dynamic attribute. For example, the user id. The list of users evolves each time someone sign up on your website, so you cannot rebuild every time someone signs up.
 
-Let's focus on this "you cannot rebuild every time". Actually, this definition is a bit trickier.
+Let's focus on this sentence : "you cannot rebuild every time X happens". Actually, this condition probably depends on the build duration: an infinitely fast static renderer can be updated everytime its set of possible request change.
 
 ### The 4th dynamic rule of build-eligibility
 
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzMzMTY3MDEsLTQwMzA5ODI0NCw1Nj
-QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
-NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
-E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
-NTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbODc3OTgwODc1LC00MDMwOTgyNDQsNTY0MT
+E4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgzLC0xNDU3ODYwMDQx
+LDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNj
+AyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUz
+NTMyLC0xNzg0MzUwMTk4XX0=
 -->
