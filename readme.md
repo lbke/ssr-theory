@@ -321,11 +321,15 @@ This includes the URL parameters as well. So, a page always has a base path, for
 
 So, Next implicitly defines an additional build-time eligibility rule like follow:
 $$
-R_{getter} \subset RB \implies \forall req \in R_{getter}; propsGetter(req)= propsGetter(req_{\{url\}})
+R_{getter} \subset RB \\
+\implies \\
+\forall req \in R_{getter}; propsGetter(req)= propsGetter(req_{\{url\}})
 $$
 The props must only depends on the considered route or URL. Otherwise you can't use the static props computation functions provided by Next.
 
 If we consider that all URLs for a page are known at build-time, we can render the page once for each possible URL. At runtime, all subsequent request on the same URL will get the same page.
+
+Note: experience Next.js users might argue that middlewares, introduced in Next 12, can be used to bypass this limitation. They are right and this is addr one of the conclusion of this paper.
 
 #### Implementation
 
@@ -435,7 +439,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMjc3Njk4OSwtMTk2MTgwNDcxLC00MD
+eyJoaXN0b3J5IjpbMTYxMTAzMzE3MywtMTk2MTgwNDcxLC00MD
 MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
 LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
 U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
