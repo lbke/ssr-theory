@@ -213,7 +213,7 @@ If $R_{getter}$ respects all 3 conditions, it's a build-eligible renderer, and i
 
 Build-time rendering is applying $renderer$ (and thus $propsGetter$) to all $req$ included in $R_{getter}$, supposing that $R_{getter} \subset RB$.
 
-Congratulations, you can enjoy static rendering from an ensemblist point of view.
+We can now understand static rendering from an ensemblist point of view.
 
 ## Implementation
 
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NDcyNTY1OCwtNDAzMDk4MjQ0LDU2ND
-ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
-MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
-YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
-MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTE2MTAxOTc3MTUsLTQwMzA5ODI0NCw1Nj
+QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
+NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
+E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
+NTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
