@@ -342,12 +342,12 @@ Extending the rendering to other request parameters also requires stronger reque
 ### "Server-Side Rendering"
 
 Next.js vision of request-time rendering is representative of what can be found in the industry. Note that for Next.js, SSR means request-time rendering specifically, while SSG (Static Site Generation) is preferred for build-time rendering.
-In this article, in accordance with our earlier definition, we prefer to be 
+
 ### Incremental Static Regeneration
 
-Formally, Incremental Static Rendering alleviates both the rule of finiteness and the rule of staticness for build-eligibility. Instead of rendering all the pages at build-time, you render them only on-demand. You can also rerender the pages more frequently, without rebuilding everything.
+Formally, Incremental Static Rendering alleviates both the rule of finiteness and the rule of staticness for build-eligibility. Instead of rendering all the pages at build-time, you render them only on-demand. You can also re-render the pages more frequently, without rebuilding everything.
 
-Since the number of requests that can hit your website is finite in a finite amount of time, it allows you to stretch the build time infinitely. 
+Since the number of requests that can hit a website is finite in a finite amount of time, it allows to stretch the build time infinitely. 
 
 Note: there is still a very minor hypothesis, that people don't spam your website with so many different requests that it saturates your ability to render the pages. More formally, that they don't map $R_{getter}$ faster than $|R_{getter}|*t_{render}$. 
 
@@ -437,9 +437,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzOTE1NzI2MiwtMTk2MTgwNDcxLC00MD
-MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
-LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
-U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
-MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTEwODE0MTI4MTAsLTE5NjE4MDQ3MSwtND
+AzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4
+MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLT
+E1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0
+ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
