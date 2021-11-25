@@ -97,7 +97,6 @@ Build-time rendering behaves as follow:
 0. Prerender the pages for various requests (see steps above)
 1. Same as for per-request SSR: select the right template based on the request. Most often based on the URL, but it could be based on other request attributes such as cookies, request headers, etc.
 2.  Return the pre-rendered content (no need for an additional computation)
-3. Render the page, by feeding the page template with the right props.
 
 #### Formally
 
@@ -429,9 +428,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjAwMTk3NzIsLTI4NDUzOTE0OCwtMz
-U4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5
-Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMz
-ksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
-
+eyJoaXN0b3J5IjpbNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1OD
+MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
+NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
+k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
