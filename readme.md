@@ -317,7 +317,7 @@ So, in our terminology, a Next.js "page" is a React template coupled with a prop
 
 Static Site Generation is a form build-time rendering. However, it does accept only one attribute as input: the request URL. 
 
-This includes the URL parameters as well. So, a page always has a base path, for instance, `/blog/articles/:id `. In Next.js, this corresponds specifically to its position in the `pages` folder. But it can also have "parameterized paths", which are called dynamic routes : that's just the base path + some route parameters. For instance, `/blog/articles/12`.
+This includes the URL parameters as well. So, a page always has a base path, for instance, `/blog/articles/:id `. In Next.js, this corresponds specifically to its position in the `pages` folder. But it can also have "parameterized paths", which are called dynamic routes : that's just the base path and some route parameters. For instance, `/blog/articles/12`.
 
 So, Next implicitly defines an additional build-time eligibility rule like follow:
 $$
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjE4MDQ3MSwtNDAzMDk4MjQ0LDU2ND
-ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
-MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
-YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
-MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbMTQwMjc3Njk4OSwtMTk2MTgwNDcxLC00MD
+MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
+LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
+U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
+MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
