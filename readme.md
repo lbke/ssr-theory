@@ -46,7 +46,7 @@ However, from the web developer perspective, this distinction doesn't really sta
 
 In this paper, we'll stick to the web developer standpoint. Therefore, to us, server-rendering includes per-request server-rendering (aka "SSR") and build-time rendering (aka "Static Site Generation (SSG)", "static rendering"...).
 
-Let's introduce the concept of "render moment": the time when the render happens, rather than the place.
+Let's introduce the concept of "render moment": the time when the render happens, rather than the place. The most well-known render moments are Build-Time Render (BTR) and Request-Time Render (RTR), but there could exist other moments: predictive rendering, incremental rendering, etc.
  
 We advocate for a lighter distinction between patterns whose only difference lies in the render moment, such as per-request SSR versus build-time SSR. 
 The "render moment" should be treated as a matter of configuration, and not as the fundamental cornerstone of the "Jamstack" philosophy.
@@ -437,9 +437,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMzM0NDg0MSwtMTk2MTgwNDcxLC00MD
-MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
-LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
-U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
-MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbNjk1MTE5NjUxLC0xOTYxODA0NzEsLTQwMz
+A5ODI0NCw1NjQxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMs
+LTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
+YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
+ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
