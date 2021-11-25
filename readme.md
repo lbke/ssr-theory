@@ -311,7 +311,7 @@ Let's apply our model to Next.js (version 12, the most recent at the time of wri
 
 In Next.js, a "page" is a React component tied to props computing functions, either build time or request time. It lives in the "/pages" folder of the application.
 
-So, in our terminology, a Next.js "page" is a React template + a props getter function, `getServerSideProps` or `getStaticProps`.
+So, in our terminology, a Next.js "page" is a React template coupled with a props getter function `getServerSideProps` or `getStaticProps`.
 
 ### Static Site Generation
 
@@ -435,7 +435,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMTMxMDQ4NiwtNDAzMDk4MjQ0LDU2ND
+eyJoaXN0b3J5IjpbMTA4NTc3MDI2NSwtNDAzMDk4MjQ0LDU2ND
 ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
 MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
 YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
