@@ -341,7 +341,8 @@ Extending the rendering to other request parameters also requires stronger reque
 
 ### "Server-Side Rendering"
 
-Next.js vision of request-time rendering is representative of what can be found in the industry. Note that for Next.js, SSR means per-re
+Next.js vision of request-time rendering is representative of what can be found in the industry. Note that for Next.js, SSR means request-time rendering specifically, while SSG (Static Site Generation) is preferred for build-time rendering.
+In this article, in accordance with our earlier definition, we prefer to be 
 ### Incremental Static Regeneration
 
 Formally, Incremental Static Rendering alleviates both the rule of finiteness and the rule of staticness for build-eligibility. Instead of rendering all the pages at build-time, you render them only on-demand. You can also rerender the pages more frequently, without rebuilding everything.
@@ -436,7 +437,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MzcyODU5NiwtMTk2MTgwNDcxLC00MD
+eyJoaXN0b3J5IjpbMTAzOTE1NzI2MiwtMTk2MTgwNDcxLC00MD
 MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
 LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
 U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
