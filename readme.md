@@ -168,14 +168,13 @@ Intuitively, the build-time rendering-eligibility of a set of requests depends a
 Intuitively, if a website has 2 modes, light and dark, build-time rendering works. 10 articles on a blog, that works. 
 But if an application wants to prerender one page per atom in the universe, it'll be in trouble.
 
-Let's try to figure when build-time rendering is possible or not more formally. Since build-time rendering is precomputing some renders for a set of requests, let's define the "build-eligibility" in terms of ensemble of possible requests instead. 
+Let's try to figure when build-time rendering is possible for a set of requests or not more formally. Since build-time rendering is precomputing some renders for a set of requests, let's define the "build-eligibility" in terms of ensemble of possible requests. 
 
 To be eligible for build-time rendering, our set of requests must have following properties:
 
 - It's a subset of the set of all possible requests (the requests are valids and make sense, like URL are correct URLs etc.)
 - It must be a finite set, otherwise build time would be infinite
 - Values should be known at build time and stay constant afterward
-
 
 ### Formally
 
@@ -185,7 +184,9 @@ Let's note $R_{getter}$ the set of all requests that a $propsGetter$ takes as in
 
 For instance, if we only use attribute 1 (say, the URL), and attribute 4 (say, the cookie that sets light or dark mode):
 $$
-R_{getter} = R_{\{attr_1, attr_4\}} \iff \forall req \in R_{getter}; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
+R_{getter} = R_{\{attr_1, attr_4\}} 
+\iff
+\forall req \in R_{getter}; propsGetter(req) = propsGetter({\{attr_1, attr_4\}})\\
 $$
 
 Let's note $RB$ the set of all subsets of $R$ that are build-eligible. 
@@ -433,9 +434,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg5OTg5MDI1LC00MDMwOTgyNDQsNTY0MT
-E4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgzLC0xNDU3ODYwMDQx
-LDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNj
-AyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUz
-NTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbMTYxMDE3ODIxMCwtNDAzMDk4MjQ0LDU2ND
+ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
+MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
+YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
+MzUzMiwtMTc4NDM1MDE5OF19
 -->
