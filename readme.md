@@ -443,7 +443,7 @@ https://github.com/VulcanJS/vulcan-next/blob/devel/src/pages/vn/examples/%5BM%5D
 
 ## Conclusion
 
-We hope this paper could form the basis of a unified vision of server-side rendering, that is implementation independant
+We hope this paper could form the basis of a unified vision of server-side rendering, that is implementation independent. Thus
 
 
 
@@ -452,9 +452,9 @@ We hope this paper could form the basis of a unified vision of server-side rende
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MjcyOTQ3NSwtMTk2MTgwNDcxLC00MD
-MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
-LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
-U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
-MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTE0NTA3NTUyNDMsLTE5NjE4MDQ3MSwtND
+AzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4
+MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLT
+E1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0
+ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
