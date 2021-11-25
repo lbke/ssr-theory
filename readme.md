@@ -264,11 +264,11 @@ We'll describe how Next.js can solve a simplified version of this problem later-
 
 ## Rendering at request time
 
-As soon as the request attributes used to render a page violate one of the 3 conditions to be a build-eligible set, this page cannot be build-time rendered anymore. This means the page should instead be rendered on-demand.
+As soon as the request attributes used to render a page violate one of the 3 conditions to be a build-eligible set, this page cannot be build-time rendered anymore. This means the page should instead be rendered on-demand, either server-side per-request, or client-side.
 
 Examples :
 
-- One attribute is infinite. Say, your page is displaying the current date. You cannot prebuild for all dates.
+- One attribute is infinite. Say, the page is displaying the current date. You cannot prebuild for all dates.
 - One attribute is time-dependent. Request time is the obvious example here, but it also violates the finiteness property so it's not that interesting. A better example would be any kind of dynamic attribute. For example, the user id. The list of users evolves each time someone sign up on your website, so you cannot rebuild every time someone signs up.
 
 Let's focus on this "you cannot rebuild every time". Actually, this definition is a bit trickier.
@@ -435,9 +435,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1ODU4MjI1NCwtNDAzMDk4MjQ0LDU2ND
-ExODkzNywtMjg0NTM5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0
-MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMT
-YwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1
-MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTIxMzMzMTY3MDEsLTQwMzA5ODI0NCw1Nj
+QxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAw
+NDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LD
+E2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMw
+NTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
