@@ -53,7 +53,7 @@ In this section, we'll dive into the deeper technical details of rendering.
 
 ### Page, template and props
 
-Let's call the result of render is a page. Most often, a combination of HTML, JS and CSS.
+Let's call the result of render is a page. When the render happens server-side, the page is a combination of HTML, JavaScript and CSS code. When the render happens client-side, the page is the final state of the Document Object Model (DOM). As a matter of simplification, we can consider that in both case, what 
 
 A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props". 
 The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
@@ -421,8 +421,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NDkzMDc2LC0zNTgzMzk4MywtMTQ1Nz
-g2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2
-NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMT
-kzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTIwNzI2NDQwNjIsLTM1ODMzOTgzLC0xND
+U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
+NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
+wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
