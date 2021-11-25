@@ -78,7 +78,7 @@ The main difference with traditional per-request server-side rendering, is that 
 
 We should keep in mind that there is no such thing as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always servers and HTTP requests around the corner.
 
-Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or may not make against the server. The initial input is still an HTTP request, only the render moment differs with per-reque
+Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or may not make against the server. The initial input is still an HTTP request, only the render moment differs with per-request SSR.
 
 #### Steps of server rendering
 
@@ -425,8 +425,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwMDQ2MTE3MiwtMjg0NTM5MTQ4LC0zNT
-gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
-ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
-w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTExNTE2MDY3NTEsLTI4NDUzOTE0OCwtMz
+U4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5
+Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMz
+ksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+
 -->
