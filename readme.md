@@ -4,7 +4,7 @@ Draft paper
 
 ## Abstract
 
-We consider the reduction of the volume of computation needed to operate a website or web application a positive outcome/
+We consider any reduction of the volume of computation needed to operate a website or web application an obligation to achieve a fast, feature-rich and energy-efficient Internet. In this regard, the "Jamstack" philosophy
 
 This paper contributions are threefold. 
 First, we propose formal definitions for various web content rendering approaches that powers the "jamstack": prerendering, server-side rendering, static rendering... Many definitions exist in the industry but none is canonical and some are even contradictory. Beyond wording details and framework specificities, we strive to unify those concepts within a common, broader understanding.
@@ -430,9 +430,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MzIyNDE0Niw1NjQxMTg5MzcsLTI4ND
-UzOTE0OCwtMzU4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMy
-MywtNDUzNjA5Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLT
-EyNjIxNjIzMzksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQz
-NTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTY5Mzc2MjU3LDU2NDExODkzNywtMjg0NT
+M5MTQ4LC0zNTgzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIz
+LC00NTM2MDkzODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMT
+I2MjE2MjMzOSw5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1
+MDE5OF19
 -->
