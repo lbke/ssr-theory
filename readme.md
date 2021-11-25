@@ -15,6 +15,8 @@ If you believe a paper, article or resource should appear in this section, pleas
 We use the definitions provided by the 2 current big players of the Jamstack ecosystem as our work-basis, namely Netlify, through the Jamstack.org website (https://jamstack.org/) and Vercel, through the Next.js framework (https://nextjs.org/).
 At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefore has been chosen as the basis of our implementation.
 
+A good example of concept that requires clarification is "prerendering". For Vercel, "prerendering" means server-side rendering, whether it happens at 
+
 ## Definitions
 
 ### Rendering
@@ -412,7 +414,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTQ0NjE1MDQsLTM1ODMzOTgzLC0xND
+eyJoaXN0b3J5IjpbLTE2NTEzNDEyODMsLTM1ODMzOTgzLC0xND
 U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
 NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
 wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
