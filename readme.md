@@ -43,7 +43,9 @@ However, from the web developer perspective, this distinction doesn't really sta
 
 In this paper, we'll stick to the web developer standpoint. Therefore, to us, server-rendering includes per-request server-rendering (aka "SSR") and build-time rendering (aka "Static Site Generation (SSG)", "static rendering"...).
 
-Let's introduce the concept of "render moment": the time when the render happens. In this paper, we advocate for a lighter distinction between patterns whose only difference lies in the "render moment", such as per-request SSR versus build-time SSR. The "render moment" should be treated as a matter of configuration, and not as the fundamental cornerstone of modern web development.
+Let's introduce the concept of "render moment": the time when the render happens, rather than the place.
+ 
+We advocate for a lighter distinction between patterns whose only difference lies in the render moment, such as per-request SSR versus build-time SSR. The "render moment" should be treated as a matter of configuration, and not as the fundamental cornerstone of modern web development.
 
 ### Page, template and props
 
@@ -415,8 +417,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MjUxNzY0NiwtMzU4MzM5ODMsLTE0NT
-c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
-NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
-E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbLTE4NjgzOTk1NjYsLTM1ODMzOTgzLC0xND
+U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
+NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
+wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
