@@ -33,7 +33,7 @@ This includes:
 #### The special case of static rendering
 
 Rendering the content at build-time, or not rendering it at all, is considered as a special case. Therefore, in the industry, SSR is often synonymous to request-time server-rendering, while the terme "static" is preferred for build-time rendering or no rendering at all.
-From the server owner perspective, this make sense: per-request SSR cost th
+From the server owner perspective, this distinction makes sense: the cost structure of per-request rendering and build-time rendering are very different. Per-request has no upfront cost, but a needs a rendefor each new request ; build-time has an upfront cost, but do not need additional computation afterward.
 
 The common factor between what we call is that both renders on the server instead of the user's computer. The difference relies on when the render happens.
 
@@ -407,7 +407,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzUxNTE5OCwtMzU4MzM5ODMsLTE0NT
+eyJoaXN0b3J5IjpbMTI5MjYxODE5MiwtMzU4MzM5ODMsLTE0NT
 c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
 NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
 E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
