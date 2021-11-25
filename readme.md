@@ -355,9 +355,9 @@ And also, that the possible values still evolves relatively slowly, otherwise us
 
 There is still a strong limitation: props are still entirely defined by the URL. It was not possible to process the request with a custom function in the current implementation, until Next.js introduced middlewares.
 
-## A unified API for server-rendering
+## A unified API for server-rendering, be it build-time, request-time, or somewhere in between
 
-Based on this model, here is what could be a unified view of SSR and SSG, for a Next.js page:
+Based on our model, here is what could be a unified view of server-rendering:
 ```ts
 // The actual page, written with a SPA framework like React, Vue, Svelte...
 type Page = (props: Props) => [HTML, CSS, JS]
@@ -373,7 +373,8 @@ type propsGetter = (req: Request)=> Promise<Props>
 // Time the rendered page should stay in the cache for a given set of props
 type TTL : Number
 ```
-Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. Tada. You don't need really have to differentiate `getServerSideProps` and `getStaticProps`. 
+Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. 
+For instance, Next.js differentiation between `getServerSideProps` (SSR) and `getStaticProps` (SSG) is a relevant implementation choice, but a still an implementation choice. Other 
 
 And an exemple implementation for paid pages on a blog:
 ```ts
@@ -437,9 +438,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNjU5ODA0NywtMTk2MTgwNDcxLC00MD
-MwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgz
-LC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMT
-U2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4
-MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbNzcxNDYwNTg0LC0xOTYxODA0NzEsLTQwMz
+A5ODI0NCw1NjQxMTg5MzcsLTI4NDUzOTE0OCwtMzU4MzM5ODMs
+LTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNT
+YzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgx
+ODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
