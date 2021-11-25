@@ -64,9 +64,13 @@ So, a page is a rendered template. Like a text with blanks, whose blanks have be
 
 #### Request = input of a server-render
 
-A request is the basic input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
+A request is the basic input of request-time server-rendering. It's more precisely an HTTP request, most of the time triggered by a human user through a web browser. 
 
-However, there's a fact often overlooked in the Jamstack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
+A request can be seen as a set of various attributes. 
+
+However, there's a fact often overlooked in the Jamstack ecosystem: in accordance to our definition of server-side rendering, build-time server rendering *also* expects a request as its input. Not only because the user has to initially query a server, via an URL, to get some content, but also because this URL is actually used by the server to retrieve the right piece ofcontent.
+
+Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
 For instance, say you have a blog with 10 articles, that you statically build using Gatsby or Next.js or whatever. Each article has its own URL, right? So when the user types "your-super-blog.whatever/article-1" they get article 1? Right?
 
@@ -421,8 +425,9 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyMDA2NTUxNSwtMjg0NTM5MTQ4LC0zNT
-gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
-ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
-w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTEzMTkwNDQxMDEsLTI4NDUzOTE0OCwtMz
+U4MzM5ODMsLTE0NTc4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5
+Mzg3LC0xNTYzMjY2NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMz
+ksOTk5NDgxODkxLDE5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+
 -->
