@@ -33,7 +33,7 @@ This includes:
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
 - no rendering at all, when content is stored directly as HTML or text. It's an edge case yet falls into the server-side rendering category, as it doesn't involve any kind of client-side rendering.
 
-### The special case of static rendering
+### The not-so-special case of static rendering
 
 Rendering the content at build-time, or not rendering it at all, is considered as a special case. Therefore, in the industry, SSR is often synonymous to request-time server-rendering, while the terme "static" is preferred for build-time rendering or no rendering at all.
 
@@ -415,8 +415,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjE2MTEyMDUsLTM1ODMzOTgzLC0xND
-U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
-NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
-wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTU1MjUxNzY0NiwtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
