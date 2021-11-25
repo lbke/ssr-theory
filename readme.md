@@ -33,7 +33,7 @@ This includes:
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
 - no rendering at all, when content is stored directly as HTML or text. It's an edge case yet falls into the server-side rendering category, as it doesn't involve any kind of client-side rendering.
 
-### The not-so-special case of static rendering
+### Render moment and the not-so-special case of static rendering
 
 Rendering the content at build-time, or not rendering it at all, is considered as a special case. Therefore, in the industry, SSR is often synonymous to request-time server-rendering, while the terme "static" is preferred for build-time rendering or no rendering at all.
 
@@ -51,7 +51,7 @@ The "render moment" should be treated as a matter of configuration, and not as t
 The remainder of this paper is focused on server-side rendering only.
 
 ### Technical definitions
-In this section, we'll dive into the deeper technical details of server-side rendering.
+In this section, we'll dive into the deeper technical details of server-side rendering needed for implementation.
 
 #### Page, template and props
 
@@ -64,7 +64,7 @@ So, a page is a rendered template. Like a text with blanks, whose blanks have be
 
 #### Request = input of a server-render
 
-A request is of course the input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
+A request is the basic input of request-time server-rendering. In this case, it is the HTTP request triggered by the user. A request can be seen as a set of various attributes. 
 
 However, there's a fact often overlooked in the Jamstack world: build-time server rendering *also* expects a request as its input. Except that it is not a full HTTP request, but only some part of it: mainly the URL.
 
@@ -421,8 +421,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NDUzOTE0OCwtMzU4MzM5ODMsLTE0NT
-c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
-NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
-E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTQyMDA2NTUxNSwtMjg0NTM5MTQ4LC0zNT
+gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
+ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
+w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
