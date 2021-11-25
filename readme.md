@@ -1,7 +1,11 @@
 # Theoretical foundations for server-side rendering and static-rendering
 Eric Burel, LBKE, eb@lbke.fr, https://www.lbke.fr 
+
 Draft paper
+
 Read the HTML version online: https://tinyurl.com/ssr-theory
+
+Edit on GitHub: https://github.com/lbke/ssr-theory
 
 ## Abstract
 
@@ -456,10 +460,10 @@ This vision could be helpful in the task of designing energy-efficient framework
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1MzcwNDA5NCw2NDUzNDkyMjEsMTk4NT
-ExMzk0NiwtMTk2MTgwNDcxLC00MDMwOTgyNDQsNTY0MTE4OTM3
-LC0yODQ1MzkxNDgsLTM1ODMzOTgzLC0xNDU3ODYwMDQxLDEzMT
-YwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5
-MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC
-0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTE1MjAyMTg1NDksMTI1MzcwNDA5NCw2ND
+UzNDkyMjEsMTk4NTExMzk0NiwtMTk2MTgwNDcxLC00MDMwOTgy
+NDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgzLC0xND
+U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
+NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
+wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
