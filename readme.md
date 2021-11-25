@@ -48,9 +48,12 @@ Let's introduce the concept of "render moment": the time when the render happens
 We advocate for a lighter distinction between patterns whose only difference lies in the render moment, such as per-request SSR versus build-time SSR. 
 The "render moment" should be treated as a matter of configuration, and not as the fundamental cornerstone of the "Jamstack" philosophy.
 
+### Technical definitions
+In this section, we'll dive into the deeper technical details of rendering.
+
 ### Page, template and props
 
-The result of server-rendering is a page. Most often, a combination of HTML, JS and CSS.
+Let's call the result of render is a page. Most often, a combination of HTML, JS and CSS.
 
 A template is a generic web page, that expects some values to generate actual HTML. Those values can be called "props". 
 The template could be typically a React component, or a template written in more classical language, like EJS, PUG, PHP...
@@ -418,8 +421,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTUyNjA2OCwtMzU4MzM5ODMsLTE0NT
-c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
-NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
-E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
+eyJoaXN0b3J5IjpbMTk0NDkzMDc2LC0zNTgzMzk4MywtMTQ1Nz
+g2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkzODcsLTE1NjMyNjY2
+NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOSw5OTk0ODE4OTEsMT
+kzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
