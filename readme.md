@@ -86,13 +86,13 @@ Server-side rendering can be split in following steps:
 
 1. For a given request, select the right template. Most often based on the URL, but it could be based on other request attributes such as cookies, request headers, etc.
 2. Compute the props of the template based on user's request. This step simply translates the HTTP request into a set of attributes that makes more sense in the business domain. Technically, this is not strictly needed for server-side rendering, the request could be directly passed to the render function.
-3. Render the page,  the templates filled with the props
+3. Render the page, by feeding the page template with the right props.
 
 Request-time rendering does this for every HTTP request.
 
-Build-time rendering does this in advance. Then, when an HTTP request is received, the server will simply return the right rendered page:
+Build-time rendering does this in advance, at build-time, for a handful of precomputed HTTP requests. Then, when an HTTP request is received, the server will simply return the right rendered page:
 
-1. Precompute the pages for various requests (see steps above)
+0. Precompute the pages for various requests (see steps above)
 2. For a given request, pick the right page
 
 #### Formally
@@ -425,8 +425,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NDUzOTgyMSwtMjg0NTM5MTQ4LC0zNT
-gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
-ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
-w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbNTczMjAyNzg5LC0yODQ1MzkxNDgsLTM1OD
+MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
+NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
+k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
 -->
