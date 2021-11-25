@@ -70,16 +70,15 @@ A request can be seen as a set of various attributes.
 
 However, there's a fact often overlooked in the Jamstack ecosystem: in accordance to our definition of server-side rendering, build-time server rendering *also* expects a request as its input. Not only because the user has to initially query a server, via an URL, to get some content, but also because this URL is actually used by the server to retrieve the right piece of content.
 
+
 For instance, imagine a blog with 10 articles, that is statically built using a React framework such as Gatsby or Next.js Each article has its own URL. So when the user types "your-super-blog.whatever/article-1" they get article 1.
+The URL is one of the attribute of the user request, and this attribute helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.
 
-The main difference with traditional per-request server-side rendering, is that the build-time rendering approach usually only uses the URL, and ignore the rest of the HTTP request. We argue that even though existing frameworks systematically waste the remainder of the HTTP request, this is not a fatality. Co
+The main difference with traditional per-request server-side rendering, is that the build-time rendering approach usually only uses the URL, and ignore the rest of the HTTP request. We argue that even though existing frameworks systematically waste the remainder of the HTTP request, this is not a fatality. Cookies, headers and other request attributes could also be used to select the right piece of content.
 
+We should keep in mind that there is no such thing as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always servers and HTTP requests around the corner.
 
-The URL is one of the attribute of the user request, and this attributes helps the server redirect the user to the right page but also the build engine to pre-render the right article for each page.
-
-Keep in mind that there is no such thing as a "serverless" website. Static websites are relying on very simple servers, that just do some redirections, but there are always some servers and HTTP requests around.
-
-So, build-time rendering is simply a precomputation of a handful requests the end-user may make when the site is live.
+Therefore, build-time rendering can be redefined as a server-side pre-computation of a handful requests the end-user may or maytmake when the site is live.
 
 #### Steps of server rendering
 
@@ -426,7 +425,7 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0OTI5MTkzLC0yODQ1MzkxNDgsLTM1OD
+eyJoaXN0b3J5IjpbMzE2NjI1NjEwLC0yODQ1MzkxNDgsLTM1OD
 MzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4
 NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LD
 k5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
