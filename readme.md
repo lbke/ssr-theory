@@ -19,10 +19,11 @@ At the time of writing, Next.js proposes the most complete set of features for s
 
 ### Server-side rendering
 
-There are many definitions of "server-side rendering" (SSR) in the wild. Let's stick to the most basic one : server rendering is rendering a web page, on the server, as opposed to rendering in the client browser.
+There are many definitions of "server-side rendering" (SSR) in the wild. Let's stick to the most basic one : server-side rendering is rendering a web page, on a server, as opposed to rendering in the client browser.
+Server-side rendering is as ancient as the web itself, and was almost the only way of rendering HTML until the
 
 This includes:
-
+- no-rendering at all: the edge-case where you write your content directly as HTML or text.
 - build-time server rendering, also known as static rendering, or static site generation (SSG). This is when you render the pages of your website when you publish it, once for all.
 - request-time server rendering, also known as just server-side rendering (SSR). This is when you render the page every time someone request it.
 
@@ -398,8 +399,8 @@ This implementation is further described in this informal article: https://blog.
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjY0NDA2ODUsLTM1ODMzOTgzLC0xND
-U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
-NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
-wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbMTMzMjIxODE1NywtMzU4MzM5ODMsLTE0NT
+c4NjAwNDEsMTMxNjA5NjMyMywtNDUzNjA5Mzg3LC0xNTYzMjY2
+NjY0LDE2MDI3MzkzNDYsLTEyNjIxNjIzMzksOTk5NDgxODkxLD
+E5MzMwNTM1MzIsLTE3ODQzNTAxOThdfQ==
 -->
