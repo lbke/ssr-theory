@@ -29,7 +29,7 @@ RedwoodJS or SvelteKit adopts this build-time definition of pre-rendering.
 
 SvelteKit specifically states the scenarios where pre-rendering applies
 https://kit.svelte.dev/docs#ssr-and-javascript-prerender-when-not-to-prerender:
-"Not all pages are suitable for prerendering. Any content that is prerendered will be seen by all users. You can of course fetch personalized data in `onMount` in a prerendered page, but this may result in a poorer user experience since it will involve blank initial content or loading indicators."
+"The basic rule is this: for a page to be prerenderable, any two users hitting it directly must get the same content from the server. Not all pages are suitable for prerendering. Any content that is prerendered will be seen by all users. You can of course fetch personalized data in `onMount` in a prerendered page, but this may result in a poorer user experience since it will involve blank initial content or loading indicators."
 While we agree with the fact that client-side rendering leads to a slower user experience and unnecessary renders, we claim that personalized content can actually be pre-rendered, under the condition of adding a micro-server with URL rewriting capabilities in front of the frontend application.
 
 ## Definitions
@@ -466,10 +466,11 @@ This vision could be helpful in the task of designing energy-efficient framework
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU2NDU4NzQ3LC0xNTIwMjE4NTQ5LDEyNT
-M3MDQwOTQsNjQ1MzQ5MjIxLDE5ODUxMTM5NDYsLTE5NjE4MDQ3
-MSwtNDAzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNT
-gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
-ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
-w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
+eyJoaXN0b3J5IjpbLTY2MDk3NjA0MSwyNTY0NTg3NDcsLTE1Mj
+AyMTg1NDksMTI1MzcwNDA5NCw2NDUzNDkyMjEsMTk4NTExMzk0
+NiwtMTk2MTgwNDcxLC00MDMwOTgyNDQsNTY0MTE4OTM3LC0yOD
+Q1MzkxNDgsLTM1ODMzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYz
+MjMsLTQ1MzYwOTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC
+0xMjYyMTYyMzM5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0
+MzUwMTk4XX0=
 -->
