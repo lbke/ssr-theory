@@ -28,7 +28,7 @@ A good example of concept that requires clarification is "prerendering". For Ver
 RedwoodJS or SvelteKit adopts this build-time definition of pre-rendering. SvelteKit specifically states the scenarios where pre-rendering applies
 https://kit.svelte.dev/docs#ssr-and-javascript-prerender-when-not-to-prerender:
 "Not all pages are suitable for prerendering. Any content that is prerendered will be seen by all users. You can of course fetch personalized data in `onMount` in a prerendered page, but this may result in a poorer user experience since it will involve blank initial content or loading indicators."
-While we agree with the fact that client-side rend
+While we agree with the fact that client-side rendering leads to a slower user experience and unnecessary renders, we claim that personalized content can actually be pre-rendered, under the condition of adding the right micro-server in front of the frontend application.
 
 ## Definitions
 
@@ -464,11 +464,10 @@ This vision could be helpful in the task of designing energy-efficient framework
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjE3MzkzNDYsLTE1MjAyMTg1NDksMT
-I1MzcwNDA5NCw2NDUzNDkyMjEsMTk4NTExMzk0NiwtMTk2MTgw
-NDcxLC00MDMwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLT
-M1ODMzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYw
-OTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMz
-M5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
-
+eyJoaXN0b3J5IjpbOTczMTUxNzQ3LC0xNTIwMjE4NTQ5LDEyNT
+M3MDQwOTQsNjQ1MzQ5MjIxLDE5ODUxMTM5NDYsLTE5NjE4MDQ3
+MSwtNDAzMDk4MjQ0LDU2NDExODkzNywtMjg0NTM5MTQ4LC0zNT
+gzMzk4MywtMTQ1Nzg2MDA0MSwxMzE2MDk2MzIzLC00NTM2MDkz
+ODcsLTE1NjMyNjY2NjQsMTYwMjczOTM0NiwtMTI2MjE2MjMzOS
+w5OTk0ODE4OTEsMTkzMzA1MzUzMiwtMTc4NDM1MDE5OF19
 -->
