@@ -25,6 +25,10 @@ We use the definitions provided by the 2 current big players of the Jamstack eco
 At the time of writing, Next.js proposes the most complete set of features for server-side rendering, and therefore has been chosen as the basis of our implementation.
 
 A good example of concept that requires clarification is "prerendering". For Vercel, "prerendering" means server-side rendering, whether it happens at build-time or request-time or somewhere in between. For Jamstack.org, "prerendering" only includes build-time rendering aka "static rendering". See https://github.com/jamstack/jamstack.org/issues/644
+RedwoodJS or SvelteKit adopts this build-time definition of pre-rendering. SvelteKit specifically states the scenarios where pre-rendering applies
+https://kit.svelte.dev/docs#ssr-and-javascript-prerender-when-not-to-prerender:
+"Not all pages are suitable for prerendering. Any content that is prerendered will be seen by all users. You can of course fetch personalized data in `onMount` in a prerendered page, but this may result in a poorer user experience since it will involve blank initial content or loading indicators."
+While we agree with the fact that client-side rend
 
 ## Definitions
 
@@ -460,10 +464,11 @@ This vision could be helpful in the task of designing energy-efficient framework
 - 09/2021 - better example for the generic SSR API
 - 11/2021 - Adding abstract, started to add related work, linking a working implementation, formalizing concepts
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjAyMTg1NDksMTI1MzcwNDA5NCw2ND
-UzNDkyMjEsMTk4NTExMzk0NiwtMTk2MTgwNDcxLC00MDMwOTgy
-NDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLTM1ODMzOTgzLC0xND
-U3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYwOTM4NywtMTU2MzI2
-NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMzM5LDk5OTQ4MTg5MS
-wxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+eyJoaXN0b3J5IjpbLTEwMjE3MzkzNDYsLTE1MjAyMTg1NDksMT
+I1MzcwNDA5NCw2NDUzNDkyMjEsMTk4NTExMzk0NiwtMTk2MTgw
+NDcxLC00MDMwOTgyNDQsNTY0MTE4OTM3LC0yODQ1MzkxNDgsLT
+M1ODMzOTgzLC0xNDU3ODYwMDQxLDEzMTYwOTYzMjMsLTQ1MzYw
+OTM4NywtMTU2MzI2NjY2NCwxNjAyNzM5MzQ2LC0xMjYyMTYyMz
+M5LDk5OTQ4MTg5MSwxOTMzMDUzNTMyLC0xNzg0MzUwMTk4XX0=
+
 -->
