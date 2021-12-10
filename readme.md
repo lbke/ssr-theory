@@ -31,6 +31,7 @@ SvelteKit specifically states the scenarios where pre-rendering applies
 (https://kit.svelte.dev/docs#ssr-and-javascript-prerender-when-not-to-prerender):
 "The basic rule is this: for a page to be prerenderable, any two users hitting it directly must get the same content from the server. Not all pages are suitable for prerendering. Any content that is prerendered will be seen by all users. You can of course fetch personalized data in `onMount` in a prerendered page, but this may result in a poorer user experience since it will involve blank initial content or loading indicators."
 While we agree with the fact that client-side rendering leads to a slower user experience and unnecessary renders, we claim that personalized content can actually be pre-rendered, under the condition of adding a micro-server with URL rewriting capabilities in front of the frontend application.
+Gatsby has a similar approach for authenticated routes (https://www.gatsbyjs.com/tutorial/authentication-tutorial/), that are supposed to be client-only route.
 
 ## Definitions
 
