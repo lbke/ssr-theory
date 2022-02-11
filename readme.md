@@ -388,7 +388,7 @@ type TTL : Number
 Yes, build-time static rendering is just server-side rendering with a cache + precomputed requests. 
 For instance, Next.js differentiation between `getServerSideProps` (SSR) and `getStaticProps` (SSG) is a relevant implementation choice, but a still an implementation choice. It is possible to imagine other implementation of server-rendering that blurs the line between the different possible "render moments". 
 
-Exemple implementation for paid pages on a blog:
+Example implementation for paid pages on a blog:
 ```ts
 export const BlogPage = (props: Props) => (
 <div>
