@@ -287,7 +287,7 @@ Let's focus on this sentence : "you cannot rebuild every time X happens". Actual
 
 ### The 4th dynamic rule of build-eligibility
 
-When a write publishes a new article on blog, or someone signs up to a SaaS product, the build-time rendered website becomes obsolete. A rebuild is needed.
+When a writer publishes a new article on blog, or someone signs up to a SaaS product, the build-time rendered website becomes obsolete. A rebuild is needed.
 
 Suppose that rendering time is constant for all requests, for the sake of simplicity. 
 
